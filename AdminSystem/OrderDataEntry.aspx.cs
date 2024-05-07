@@ -23,7 +23,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instanc of clsOrder
         clsOrder anOrder = new clsOrder();
         //capture order id
+        anOrder.CustomerId = Convert.ToInt32(txtCustomerId.Text);
         anOrder.DeliveryAddress = txtDeliveryAddress.Text;
+        anOrder.DateAdded = Convert.ToDateTime(txtOrderDate.Text);
+        anOrder.DeliveryStatus = chkDeliveryStatus.Checked;
+        anOrder.TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
         //store address in session object
         Session["anOrder"] = anOrder;
 
