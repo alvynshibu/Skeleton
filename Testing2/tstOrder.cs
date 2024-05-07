@@ -47,11 +47,36 @@ namespace Testing1
         {
             clsOrder anOrder = new clsOrder();
 
-            Int TestData = 1;
+            Int32 TestData = 1;
 
             anOrder.CustomerId = TestData;
 
             Assert.AreEqual(anOrder.CustomerId, TestData);
+        }
+
+        [TestMethod]
+
+        public void DeliveryAddressOK()
+        {
+            clsOrder anOrder = new clsOrder();
+
+            String TestData = "LE1 4GB";
+
+            anOrder.DeliveryAddress = TestData;
+
+            Assert.AreEqual(anOrder.DeliveryAddress, TestData);
+        }
+
+        [TestMethod]
+
+        public void TotalAmountOK()
+        {
+            clsOrder anOrder = new clsOrder();
+
+
+            anOrder.TotalAmount = (decimal)200.03;
+
+            Assert.AreEqual(anOrder.TotalAmount, (decimal)200.03);
         }
     }
 }

@@ -15,5 +15,44 @@ namespace Testing6
 
             Assert.IsNotNull(AnOrderLine);
         }
+
+        [TestMethod]
+
+        public void OrderIdOK()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+
+            Int32 TestData = 1;
+
+            anOrderLine.OrderId = TestData;
+
+            Assert.AreEqual(anOrderLine.OrderId, TestData);
+        }
+
+        [TestMethod]
+
+        public void StockIdOK()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+
+            Int32 TestData = 1;
+
+            anOrderLine.StockId = TestData;
+
+            Assert.AreEqual(anOrderLine.StockId, TestData);
+        }
+
+        [TestMethod]
+
+        public void QuantityOK()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+
+            Int32 TestData = 10;
+
+            anOrderLine.Quantity = TestData;
+
+            Assert.AreEqual(anOrderLine.Quantity, TestData);
+        }
     }
 }
