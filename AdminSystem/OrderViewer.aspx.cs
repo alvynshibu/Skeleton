@@ -15,6 +15,11 @@ public partial class _1Viewer : System.Web.UI.Page
         //get the dta from the session object
         anOrder = (clsOrder)Session["anOrder"];
         //display the address for this entry
+        Response.Write(anOrder.OrderId);
+        Response.Write(anOrder.CustomerId);
         Response.Write(anOrder.DeliveryAddress);
+        Response.Write(anOrder.DateAdded);
+        Response.Write(anOrder.TotalAmount);
+        Response.Write(anOrder.DeliveryStatus);
     }
 }
