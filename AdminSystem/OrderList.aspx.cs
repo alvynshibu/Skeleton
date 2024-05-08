@@ -11,4 +11,10 @@ public partial class _1_List : System.Web.UI.Page
     {
 
     }
+
+    protected void btnOk_Click(object sender, EventArgs e)
+    {
+        //Need to change below
+        Response.Redirect("OrderViewer.aspx");
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -23,6 +24,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instanc of clsOrder
         clsOrder anOrder = new clsOrder();
         //capture order id
+        anOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
         anOrder.CustomerId = Convert.ToInt32(txtCustomerId.Text);
         anOrder.DeliveryAddress = txtDeliveryAddress.Text;
         anOrder.DateAdded = Convert.ToDateTime(txtOrderDate.Text);
