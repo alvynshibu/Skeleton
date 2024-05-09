@@ -68,7 +68,7 @@ namespace Testing1
         public void PricePropertyOK()
         {
             clsStock aStock = new clsStock();
-            string TestData = "LE1 2GH";
+            decimal TestData = 100.34m;
             aStock.Price = TestData;
             Assert.AreEqual(aStock.Price, TestData);
         }

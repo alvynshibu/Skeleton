@@ -7,6 +7,8 @@
     <title></title>
 </head>
 <body>
+    This is the Stock Viewer Page
+    <br />
     <form id="form1" runat="server">
         <div>
         </div>
