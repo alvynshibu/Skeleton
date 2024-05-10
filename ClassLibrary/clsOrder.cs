@@ -101,18 +101,18 @@ namespace ClassLibrary
             //create instance of data connection
             clsDataConnection DB = new clsDataConnection();
             //add parameter for the order id to search for
-            DB.AddParameter("@OrderId", OrderId);
+            DB.AddParameter("@OrderId", orderId);
             //execute the stored procedure
-            DB.Execute("sproc_tblOrder_FilterBy_AddressId");
+            DB.Execute("sproc_tblOrder_FilterByOrderId");
             //if one record is found (there should be either one or zero)
             if(DB.Count == 1)
             {
                 mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
-                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[1]["CustomerId"]);
-                mDeliveryAddress = Convert.ToString(DB.DataTable.Rows[2]["DeliveryAddress"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[3]["OrderDate"]);
-                mDeliveryStatus = Convert.ToBoolean(DB.DataTable.Rows[4]["DeliveryStatus"]);
-                mTotalAmount = Convert.ToDecimal(DB.DataTable.Rows[5]["TotalAmount"]);
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mDeliveryAddress = Convert.ToString(DB.DataTable.Rows[0]["DeliveryAddress"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mDeliveryStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["DeliveryStatus"]);
+                mTotalAmount = Convert.ToDecimal(DB.DataTable.Rows[0]["TotalAmount"]);
                 //return that everything worked
                 return true;
             }
