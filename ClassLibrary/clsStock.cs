@@ -12,5 +12,10 @@ namespace ClassLibrary
         public decimal Price { get; set; }
         public int SupplierId { get; set; }
         public bool Available { get; set; }
+
+        public bool Find(int stockId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
