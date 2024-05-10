@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 namespace Testing1
 {
     [TestClass]
-    public class tstOrder
+    public class tstStock
     {
         [TestMethod]
         public void InstanceOK()
@@ -50,7 +50,7 @@ namespace Testing1
         public void ItemNamePropertyOK()
         {
             clsStock aStock = new clsStock();
-            Int32 TestData = 1;
+            string TestData = "gkgk";
             aStock.ItemName = TestData;
             Assert.AreEqual(aStock.ItemName, TestData);
 
@@ -98,5 +98,7 @@ namespace Testing1
             aStock.DateAdded = TestData;
             Assert.AreEqual(aStock.DateAdded, TestData);
         }
+
+       
     }
 }
