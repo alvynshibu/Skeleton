@@ -78,7 +78,7 @@ namespace Testing6
             //boolean variable stores result of validation
             Boolean Found = false;
             //test data to use with method
-            Int32 OrderLineId = 21;
+            Int32 OrderLineId = 18;
             //invoke test method
             Found = anOrderLine.Find(OrderLineId);
             //test to see if the result is true
@@ -97,11 +97,11 @@ namespace Testing6
             //boolean to record if tets data is ok
             Boolean Ok = true;
             //test data to use with method
-            Int32 OrderLineId = 21;
+            Int32 OrderLineId = 18;
             //invoke test method
             Found = anOrderLine.Find(OrderLineId);
             //check orderline id
-            if (anOrderLine.OrderLineId != 21) {
+            if (anOrderLine.OrderLineId != 18) {
                 Ok = false;
             }
             //test for result
@@ -120,11 +120,11 @@ namespace Testing6
             //boolean to record if tets data is ok
             Boolean Ok = true;
             //test data to use with method
-            Int32 OrderId = 21;
+            Int32 OrderLineId = 18;
             //invoke test method
-            Found = anOrderLine.Find(OrderId);
+            Found = anOrderLine.Find(OrderLineId);
             //check order id
-            if (anOrderLine.OrderId != 21)
+            if (anOrderLine.OrderId != 2)
             {
                 Ok = false;
             }
@@ -144,11 +144,11 @@ namespace Testing6
             //boolean to record if tets data is ok
             Boolean Ok = true;
             //test data to use with method
-            Int32 StockId = 21;
+            Int32 OrderLineId = 18;
             //invoke test method
-            Found = anOrderLine.Find(StockId);
+            Found = anOrderLine.Find(OrderLineId);
             //check stock id
-            if (anOrderLine.StockId != 21)
+            if (anOrderLine.StockId != 16)
             {
                 Ok = false;
             }
@@ -168,16 +168,17 @@ namespace Testing6
             //boolean to record if tets data is ok
             Boolean Ok = true;
             //test data to use with method
-            Int32 Quantity = 21;
+            Int32 OrderLineId = 18;
             //invoke test method
-            Found = anOrderLine.Find(Quantity);
+            Found = anOrderLine.Find(OrderLineId);
             //check quantity
-            if (anOrderLine.Quantity != 21)
+            if (anOrderLine.Quantity != 2)
             {
                 Ok = false;
             }
             //test for result
             Assert.IsTrue(Ok);
         }
+
     }
 }
