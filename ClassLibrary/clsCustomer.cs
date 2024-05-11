@@ -7,7 +7,7 @@ namespace ClassLibrary
     {
         //private data members for the CustomerId property
         private Int32 mCustomerId;
-        private bool mEmail;
+        private bool mEmailNotification;
         private DateTime mRegistrationDate;
         private string mCustomerName;
         private string mCustomerEmail;
@@ -30,17 +30,17 @@ namespace ClassLibrary
         }
 
 
-        public bool Email
+        public bool EmailNotification
         {
             get
             {
                 //this line of code sends data out of the property
-                return mEmail;
+                return mEmailNotification;
             }
             set
             {
                 //this line of code allows data into the property
-                mEmail = value;
+                mEmailNotification = value;
             }
         }
 
@@ -123,20 +123,36 @@ namespace ClassLibrary
             }
         }
 
+        /****** FIND METHOD ******/
 
-
-        public bool Find(int customerId)
+        public bool Find(int CustomerId)
         {
-            //set the private data members to the test data value
-            mCustomerId = 21;
-            mEmail = true;
-            mRegistrationDate = Convert.ToDateTime("23/12/2022");
-            mCustomerName = "Alvyn";
-            mCustomerEmail = "alvynshibu@gmail.com";
-            mPhoneNumber = 07341251;
-            mCustomerAddress = "1 Lineker Road, Leicester, LE2 7FZ";
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the customer id to search for
+            DB.AddParameter("@CustomerId", CustomerId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByCustomerId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count ==1)
+            {
+                //copy the data from the database to the private data members
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mCustomerEmail = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmail"]);
+                mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
+                mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
+                mPhoneNumber = Convert.ToInt32(DB.DataTable.Rows[0]["PhoneNumber"]);
+                mRegistrationDate = Convert.ToDateTime(DB.DataTable.Rows[0]["RegistrationDate"]);
+                mEmailNotification = Convert.ToBoolean(DB.DataTable.Rows[0]["EmailNotification"]);
+                //return everything that worked ok
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false, indicating there is a problem
+                return false;
+            }
         }
     }
 

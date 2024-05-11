@@ -21,6 +21,6 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(ACustomer.CustomerId);
         Response.Write(ACustomer.PhoneNumber);
         Response.Write(ACustomer.RegistrationDate);
-        Response.Write(ACustomer.Email);
+        Response.Write(ACustomer.EmailNotification);
     }
 }
