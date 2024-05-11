@@ -58,6 +58,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtOrderDate.Text = anOrder.DateAdded.ToString();
             chkDeliveryStatus.Checked = anOrder.DeliveryStatus;
             txtTotalAmount.Text = anOrder.TotalAmount.ToString();
+            lblError.Text = "";
+        }
+        else
+        {
+            lblError.Text = "Order ID not found";
         }
 
     }

@@ -67,13 +67,30 @@ namespace ClassLibrary
 
         public bool Find(int orderLineId)
         {
-            //set private data members to test data value
-            mOrderLineId = 21;
-            mOrderId = 21;
-            mStockId = 21;
-            mQuantity = 21;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the orderline id to search for
+            DB.AddParameter("@OrderLineId", orderLineId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrderLine_FilterByOrderLineId");
+            //if one record is found (there should be either one or zero)
+            if(DB.Count == 1)
+            {
+                //set private data members to test data value
+                mOrderLineId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderLineId"]);
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                mStockId = Convert.ToInt32(DB.DataTable.Rows[0]["StockId"]);
+                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
+                //always return true
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
+            
         }
     }
 }
