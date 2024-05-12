@@ -21,7 +21,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOk_Click(object sender, EventArgs e)
     {
-        //create a new instanc of clsOrder
+        if (string.IsNullOrWhiteSpace(txtOrderId.Text) ||
+         string.IsNullOrWhiteSpace(txtCustomerId.Text) ||
+         string.IsNullOrWhiteSpace(txtDeliveryAddress.Text) ||
+         string.IsNullOrWhiteSpace(txtOrderDate.Text) ||
+         string.IsNullOrWhiteSpace(txtTotalAmount.Text))
+        {
+            lblError.Text = "Please fill in all fields";
+            return;
+        }
+        //create a new instance of clsOrder
         clsOrder anOrder = new clsOrder();
         //capture order id
         anOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
@@ -39,6 +48,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
+        //Check if OrderId textbox is empty
+        if (string.IsNullOrWhiteSpace(txtOrderId.Text))
+        {
+            lblError.Text = "Please enter Order ID";
+            return;
+        }
         //create an insatnce of the order class
         clsOrder anOrder = new clsOrder();
         //create a variable to store the primary key
