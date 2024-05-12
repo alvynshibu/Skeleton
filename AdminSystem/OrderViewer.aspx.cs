@@ -21,5 +21,6 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(anOrder.DateAdded);
         Response.Write(anOrder.TotalAmount);
         Response.Write(anOrder.DeliveryStatus);
+        Response.Write(anOrder.StaffId);   
     }
 }
