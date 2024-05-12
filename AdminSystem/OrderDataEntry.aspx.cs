@@ -19,13 +19,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-    protected void btnOk_Click(object sender, EventArgs e)
+    protected void btnOk_Click1(object sender, EventArgs e)
     {
         if (string.IsNullOrWhiteSpace(txtOrderId.Text) ||
          string.IsNullOrWhiteSpace(txtCustomerId.Text) ||
          string.IsNullOrWhiteSpace(txtDeliveryAddress.Text) ||
          string.IsNullOrWhiteSpace(txtOrderDate.Text) ||
-         string.IsNullOrWhiteSpace(txtTotalAmount.Text))
+         string.IsNullOrWhiteSpace(txtTotalAmount.Text) ||
+         string.IsNullOrWhiteSpace(txtStaffId.Text))
         {
             lblError.Text = "Please fill in all fields";
             return;
@@ -39,6 +40,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         anOrder.DateAdded = Convert.ToDateTime(txtOrderDate.Text);
         anOrder.DeliveryStatus = chkDeliveryStatus.Checked;
         anOrder.TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
+        anOrder.StaffId = Convert.ToInt32(txtStaffId.Text);
         //store address in session object
         Session["anOrder"] = anOrder;
 
@@ -73,6 +75,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtOrderDate.Text = anOrder.DateAdded.ToString();
             chkDeliveryStatus.Checked = anOrder.DeliveryStatus;
             txtTotalAmount.Text = anOrder.TotalAmount.ToString();
+            txtStaffId.Text = anOrder.StaffId.ToString();
             lblError.Text = "";
         }
         else
@@ -81,4 +84,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
 
     }
+
+   
 }

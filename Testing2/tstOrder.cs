@@ -90,6 +90,19 @@ namespace Testing1
 
             Assert.AreEqual(anOrder.TotalAmount, (decimal)20.00);
         }
+        
+        [TestMethod]
+
+        public void StaffIdOK()
+        {
+            clsOrder anOrder = new clsOrder();
+
+            Int32 TestData = 1;
+
+            anOrder.StaffId = TestData;
+
+            Assert.AreEqual(anOrder.StaffId, TestData);
+        }
 
         [TestMethod]
 
@@ -238,6 +251,29 @@ namespace Testing1
             Found = anOrder.Find(OrderId);
             //check the delivery status
             if (anOrder.DeliveryStatus != Convert.ToBoolean(1))
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
+        
+        [TestMethod]
+
+        public void TestStaffIdFound()
+        {
+            //create an instance of the class we want to create
+            clsOrder anOrder = new clsOrder();
+            //create a boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean variable to record if the data is OK(assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 OrderId = 5;
+            //invoke the method
+            Found = anOrder.Find(OrderId);
+            //check the staff id
+            if (anOrder.StaffId != 1)
             {
                 OK = false;
             }

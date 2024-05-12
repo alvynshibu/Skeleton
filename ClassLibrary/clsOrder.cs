@@ -16,6 +16,8 @@ namespace ClassLibrary
         private decimal mTotalAmount;
         //private data member for delivery status property
         private Boolean mDeliveryStatus;
+        //private data member for the order id property
+        private Int32 mStaffId;
         //orderid public property
         public int OrderId
         {
@@ -95,6 +97,19 @@ namespace ClassLibrary
                 mTotalAmount = value;
             }
         }
+        public int StaffId
+        {
+            get
+            {
+                //this line of code sends data out of the property
+                return mStaffId;
+            }
+            set
+            {
+                //this line of code allows data into the property
+                mStaffId = value;
+            }
+        }
 
         public bool Find(int orderId)
         {
@@ -113,6 +128,7 @@ namespace ClassLibrary
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
                 mDeliveryStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["DeliveryStatus"]);
                 mTotalAmount = Convert.ToDecimal(DB.DataTable.Rows[0]["TotalAmount"]);
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
                 //return that everything worked
                 return true;
             }
