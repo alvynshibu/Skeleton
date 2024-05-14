@@ -21,7 +21,42 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOk_Click1(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(txtOrderId.Text) ||
+        //create a new instance of the class
+        clsOrder anOrder = new clsOrder();
+        //capture order id
+        string orderId = txtOrderId.Text;
+        //capture customer id
+        string customerId = txtCustomerId.Text;
+        //capture the staff id
+        string staffId = txtStaffId.Text;
+        //capture delivery address
+        string deliveryAddress = txtDeliveryAddress.Text;
+        //capture date added
+        string dateAdded = txtOrderDate.Text;
+        //capture delivery status
+        bool deliveryStatus = chkDeliveryStatus.Checked;
+        //variable to store error messages
+        String Error = "";
+
+        Error = anOrder.Valid(customerId, deliveryAddress, dateAdded, staffId);
+        if (Error == "")
+        {
+            //capture the Customer ID
+            anOrder.CustomerId = Convert.ToInt32(customerId);
+            //capture staffid
+            anOrder.StaffId = Convert.ToInt32(staffId);
+            //capture delivery address
+            anOrder.DeliveryAddress = deliveryAddress;
+            //capture date added
+            anOrder.DateAdded = Convert.ToDateTime(dateAdded);
+
+
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+        /*if (string.IsNullOrWhiteSpace(txtOrderId.Text) ||
          string.IsNullOrWhiteSpace(txtCustomerId.Text) ||
          string.IsNullOrWhiteSpace(txtDeliveryAddress.Text) ||
          string.IsNullOrWhiteSpace(txtOrderDate.Text) ||
@@ -45,7 +80,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["anOrder"] = anOrder;
 
         //navigate to view page
-        Response.Redirect("OrderViewer.aspx");
+        Response.Redirect("OrderViewer.aspx");*/
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
