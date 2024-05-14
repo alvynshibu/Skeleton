@@ -1,4 +1,4 @@
-﻿using ClassLibrary;
+﻿ using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Security.Cryptography.X509Certificates;
@@ -84,7 +84,7 @@ namespace Testing1
         {
             clsStock aStock = new clsStock();
             Boolean Found = false;
-            Int32 aStockId = 12;
+            Int32 aStockId = 16;
             Found = aStock.Find(aStockId);
             Assert.IsTrue( Found);
         }
@@ -101,11 +101,11 @@ namespace Testing1
             //create a boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockId = 1;
+            Int32 StockId = 16;
             //invoke the method
             Found = aStock.Find(StockId);
             //check the address id
-            if (aStock.StockId != 21)
+            if (aStock.StockId != 16)
             {
                 OK = false;
             }
@@ -126,7 +126,7 @@ namespace Testing1
             //invoke the method
             Found = aStock.Find(StockId);
             //check the address id
-            if (aStock.ItemName != Convert.ToString("zee"))
+            if (aStock.ItemName != Convert.ToString("Redbull"))
             {
                 OK = false;
             }
@@ -147,7 +147,7 @@ namespace Testing1
             //invoke the method
             Found = aStock.Find(StockId);
             //check the address id
-            if (aStock.Quantity != Convert.ToInt32(1233))
+            if (aStock.Quantity != Convert.ToInt32(2))
             {
                 OK = false;
             }
@@ -168,7 +168,7 @@ namespace Testing1
             //invoke the method
             Found = aStock.Find(StockId);
             //check the address id
-            if (aStock.Price != Convert.ToDecimal(12.3))
+            if (aStock.Price != Convert.ToDecimal(2.0))
             {
                 OK = false;
             }
@@ -189,7 +189,7 @@ namespace Testing1
             //invoke the method
             Found = aStock.Find(StockId);
             //check the address id
-            if (aStock.SupplierId != Convert.ToInt32(23))
+            if (aStock.SupplierId != Convert.ToInt32(1))
             {
                 OK = false;
             }
@@ -231,7 +231,7 @@ namespace Testing1
             //invoke the method
             Found = aStock.Find(StockId);
             //check the dateAdded property
-            if (aStock.OrderDate != Convert.ToDateTime("23/12/2022"))
+            if (aStock.OrderDate != Convert.ToDateTime("01/01/2024"))
             {
                 OK = false;
             }
