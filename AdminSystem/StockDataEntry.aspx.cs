@@ -27,8 +27,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         aStock.Price = Convert.ToDecimal(txtPrice.Text); 
         aStock.SupplierId = Convert.ToInt32(txtSupplierId.Text);
         aStock.Available = CheckBox1.Checked;
-        aStock.DateAdded = Convert.ToDateTime(DateTime.Now);
-        aStock.Active = CheckBox1.Checked; 
+        aStock.OrderDate = Convert.ToDateTime(DateTime.Now);
         Session["aStock"] = aStock;
         Response.Redirect("StockViewer.aspx");
     }
