@@ -140,5 +140,10 @@ namespace ClassLibrary
             }
 
         }
+
+        public string Valid(int customerId, int staffId, DateTime dateAdded, string deliveryAddress, decimal totalAmount, bool deliveryStatus)
+        {
+            return "";
+        }
     }
 }
