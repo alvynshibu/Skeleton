@@ -13,6 +13,7 @@
         </div>
         <p>
         <asp:Label ID="lblStockId" runat="server" style="z-index: 1; left: 26px; top: 48px; position: absolute; width: 81px;" Text="Stock ID"></asp:Label>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="margin-left: 406px" Text="Find" Width="135px" />
         </p>
         <p>
             &nbsp;</p>
