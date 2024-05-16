@@ -141,7 +141,7 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string customerId, string deliveryAddress, string dateAdded, string staffId)
+        public string Valid(string customerId, string deliveryAddress, string dateAdded, decimal totalAmount, string staffId)
         {
             //create a string variable to store the error
             String Error = "";
@@ -178,6 +178,11 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The date was not a valid date";
             }
+            //if total amount is less than 0
+            if(totalAmount < (decimal)0.00)
+            {
+                Error = Error + "The total price cannot be less than 0 : ";
+            }
             //if the customer id is blank
             if(customerId.Length == 0)
             {
@@ -188,7 +193,7 @@ namespace ClassLibrary
             {
                 Error = Error + "Staff ID cannot be blank : ";
             }
-
+            
 
             //return any error messages
             return Error;
