@@ -30,7 +30,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         ACustomer.CustomerEmail = txtCustomerEmail.Text;
         ACustomer.CustomerAddress = txtCustomerAddress.Text;
         ACustomer.CustomerId = Convert.ToInt32(txtCustomerId.Text);
-        ACustomer.PhoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
+        ACustomer.PhoneNumber = txtPhoneNumber.Text;
         ACustomer.RegistrationDate = Convert.ToDateTime(DateTime.Now);
         ACustomer.EmailNotification = chkEmailNotifications.Checked;
 
@@ -65,7 +65,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerName.Text = ACustomer.CustomerName;
             txtCustomerEmail.Text = ACustomer.CustomerEmail;
             txtCustomerAddress.Text = ACustomer.CustomerAddress;
-            txtPhoneNumber.Text = ACustomer.PhoneNumber.ToString();
+            txtPhoneNumber.Text = ACustomer.PhoneNumber;
             txtRegistrationDate.Text = ACustomer.RegistrationDate.ToString();
             chkEmailNotifications.Checked = ACustomer.EmailNotification;
         }
