@@ -14,13 +14,12 @@ public partial class _1Viewer : System.Web.UI.Page
         clsOrder anOrder = new clsOrder();
         //get the dta from the session object
         anOrder = (clsOrder)Session["anOrder"];
-        //display the address for this entry
-        Response.Write(anOrder.OrderId);
-        Response.Write(anOrder.CustomerId);
-        Response.Write(anOrder.DeliveryAddress);
-        Response.Write(anOrder.DateAdded);
-        Response.Write(anOrder.TotalAmount);
-        Response.Write(anOrder.DeliveryStatus);
+        //display the details for this entry
+        Response.Write(anOrder.CustomerId + "<br>");
+        Response.Write(anOrder.DeliveryAddress + "<br>");
+        Response.Write(anOrder.DateAdded + "<br>");
+        Response.Write(anOrder.TotalAmount + "<br>");
+        Response.Write(anOrder.DeliveryStatus + "<br>");
         Response.Write(anOrder.StaffId);   
     }
 }

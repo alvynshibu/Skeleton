@@ -23,8 +23,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of the class
         clsOrder anOrder = new clsOrder();
-        //capture order id
-        string orderId = txtOrderId.Text;
+        //capture total amount
+        decimal totalAmount = Convert.ToDecimal(txtTotalAmount.Text);
         //capture customer id
         string customerId = txtCustomerId.Text;
         //capture the staff id
@@ -38,9 +38,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store error messages
         String Error = "";
 
-        Error = anOrder.Valid(customerId, deliveryAddress, dateAdded, staffId);
+        Error = anOrder.Valid(customerId, deliveryAddress, dateAdded, totalAmount, staffId);
         if (Error == "")
         {
+            //capture total amount
+            anOrder.TotalAmount = totalAmount;
+            //capture delivery status
+            anOrder.DeliveryStatus = deliveryStatus;
             //capture the Customer ID
             anOrder.CustomerId = Convert.ToInt32(customerId);
             //capture staffid
@@ -49,7 +53,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             anOrder.DeliveryAddress = deliveryAddress;
             //capture date added
             anOrder.DateAdded = Convert.ToDateTime(dateAdded);
-
+            //store order in session order
+            Session["anOrder"] = anOrder;
+            //navigate to view page
+            Response.Redirect("OrderViewer.aspx");
 
         }
         else
