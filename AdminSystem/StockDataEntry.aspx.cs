@@ -8,6 +8,12 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    public string ItemName { get; private set; }
+    public int Quantity { get; private set; }
+    public decimal Price { get; private set; }
+    public int SupplierId { get; private set; }
+    public bool Available { get; private set; }
+    public DateTime OrderDate { get; private set; }
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -21,18 +27,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStock aStock = new clsStock();
-        aStock.StockId = Convert.ToInt32(txtStockId.Text);   
+        aStock.StockId = Convert.ToInt32(txtStockId.Text);
         aStock.ItemName = txtItemName.Text;
         aStock.Quantity = Convert.ToInt32(txtQuantity.Text);
-        aStock.Price = Convert.ToDecimal(txtPrice.Text); 
+        aStock.Price = Convert.ToDecimal(txtPrice.Text);
         aStock.SupplierId = Convert.ToInt32(txtSupplierId.Text);
         aStock.Available = CheckBox1.Checked;
         aStock.OrderDate = Convert.ToDateTime(DateTime.Now);
-        Session["aStock"] = aStock;
-        Response.Redirect("StockViewer.aspx");
+        string Error = "";
+        Error = aStock.Valid(txtItemName.Text, txtQuantity.Text, txtPrice.Text, txtSupplierId.Text, txtAvailable.Text, DateTime.Now.ToString());
+        if (Error == "")
+        {
+            aStock.ItemName = ItemName;
+            aStock.Quantity = Quantity;
+            aStock.Price = Price;
+            aStock.SupplierId = SupplierId;
+            aStock.Available = Available;
+            aStock.OrderDate = Convert.ToDateTime(OrderDate);
+            Session["aStock"] = aStock;
+            Response.Redirect("StockViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+
     }
-
-
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
