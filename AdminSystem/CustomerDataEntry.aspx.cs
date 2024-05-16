@@ -25,21 +25,46 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
-        //capture the attributes
-        ACustomer.CustomerName = txtCustomerName.Text;
-        ACustomer.CustomerEmail = txtCustomerEmail.Text;
-        ACustomer.CustomerAddress = txtCustomerAddress.Text;
-        ACustomer.CustomerId = Convert.ToInt32(txtCustomerId.Text);
-        ACustomer.PhoneNumber = txtPhoneNumber.Text;
-        ACustomer.RegistrationDate = Convert.ToDateTime(DateTime.Now);
-        ACustomer.EmailNotification = chkEmailNotifications.Checked;
-
-        //store the attributes in the sesion object
-        Session["ACustomer"] = ACustomer;
-        //navigate to the view page
-        Response.Redirect("CustomerViewer.aspx");
-
+        //capture the customer name
+        string CustomerName = txtCustomerName.Text;
+        //capture the customer address
+        string CustomerAddress = txtCustomerAddress.Text;
+        //capture the customer email
+        string CustomerEmail = txtCustomerEmail.Text;
+        //capture the phone number
+        string PhoneNumber = txtPhoneNumber.Text;
+        //capture the registration date
+        string RegistrationDate = txtRegistrationDate.Text;
+        //capture the email notifications
+        string EmailNotification = chkEmailNotifications.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = ACustomer.Valid(CustomerName, CustomerAddress, CustomerEmail, PhoneNumber, RegistrationDate);
+        if (Error == "")
+        {
+            //capture the customer name
+            ACustomer.CustomerName = CustomerName;
+            //capture the customer address
+            ACustomer.CustomerAddress = CustomerAddress;
+            //capture the customer email
+            ACustomer.CustomerEmail = CustomerEmail;
+            //capture the phone number
+            ACustomer.PhoneNumber = PhoneNumber;
+            //capture the registration date
+            ACustomer.RegistrationDate = Convert.ToDateTime(RegistrationDate);
+            //store the customer in the session object
+            Session["ACustomer"] = ACustomer;
+            //Navigate to the view page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
+
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
