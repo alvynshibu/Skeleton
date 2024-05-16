@@ -117,5 +117,63 @@ namespace ClassLibrary
 
 
         }
+
+        public string Valid(string itemName, string quantity, string price, string supplierId, string available, string orderDate)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            //if the HouseNo is blank
+            if (itemName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The ItemName name may not be blank :";
+            }
+            //if the ItemName is greater than 5 characters
+            if (itemName.Length > 30)
+            {
+                Error = Error + "The ItemName must not be less than 5 characters:";
+            }
+
+            if (quantity.Length == 0)
+            {
+                Error = Error + "The Quantity may not be empty ";
+            }
+           else if (!int.TryParse(quantity, out int quantityValue) || quantityValue<=0) 
+            {
+                Error = Error + "The Quantity must be greater than 1";            
+            }
+
+            if (price.Length == 0)
+            {
+                Error = Error + "The Price may not be empty ";
+            }
+            else if (!decimal.TryParse(price, out decimal priceValue) || priceValue <= 0)
+            {
+                Error = Error + "The Price must be greater than 1";
+            }
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(orderDate);
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The date cannot be in the past";
+                }
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The date cannot be in future";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date";
+            }
+
+
+
+            //return any error messages
+            return Error;
+        }
     }
 }

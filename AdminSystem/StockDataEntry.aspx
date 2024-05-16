@@ -8,8 +8,8 @@
 </head>
 <body style="height: 502px">
     <form id="form1" runat="server">
-        <div>
-            <asp:TextBox ID="txtStockId" runat="server" style="z-index: 1; left: 172px; top: 49px; position: absolute"></asp:TextBox>
+        <div style="margin-left: 800px">
+            <asp:TextBox ID="txtStockId" runat="server" style="z-index: 1; left: 177px; top: 49px; position: absolute"></asp:TextBox>
         </div>
         <p>
         <asp:Label ID="lblStockId" runat="server" style="z-index: 1; left: 26px; top: 48px; position: absolute; width: 81px;" Text="Stock ID"></asp:Label>
@@ -24,10 +24,10 @@
         <p>
             &nbsp;</p>
         <asp:Label ID="lblPrice" runat="server" style="z-index: 1; left: 11px; top: 248px; position: absolute" Text="Price"></asp:Label>
-        <asp:TextBox ID="txtQuantity" runat="server" style="z-index: 1; left: 164px; top: 194px; position: absolute"></asp:TextBox>
-        <p>
+        <asp:TextBox ID="txtQuantity" runat="server" style="z-index: 1; left: 177px; top: 192px; position: absolute"></asp:TextBox>
+        <p style="margin-left: 760px">
             <asp:Label ID="lblSupplierId" runat="server" style="z-index: 1; left: 15px; top: 302px; position: absolute" Text="SupplierId"></asp:Label>
-            <asp:TextBox ID="txtItemName" runat="server" style="z-index: 1; left: 167px; top: 129px; position: absolute"></asp:TextBox>
+            <asp:TextBox ID="txtItemName" runat="server" style="z-index: 1; left: 177px; top: 128px; position: absolute"></asp:TextBox>
         </p>
         <asp:Label ID="lblAvailable" runat="server" style="z-index: 1; left: 17px; top: 360px; position: absolute" Text="Available"></asp:Label>
         <asp:Label ID="lblOrderDate" runat="server" style="z-index: 1; left: 19px; top: 410px; position: absolute" Text="OrderDate"></asp:Label>
@@ -38,11 +38,11 @@
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 25px; top: 519px; position: absolute" Text="OK" />
         <p>
             <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 117px; top: 520px; position: absolute" Text="Cancel" />
-            <asp:TextBox ID="txtSupplierId" runat="server" style="z-index: 1; left: 147px; top: 310px; position: absolute"></asp:TextBox>
+            <asp:TextBox ID="txtSupplierId" runat="server" style="z-index: 1; left: 177px; top: 310px; position: absolute"></asp:TextBox>
         </p>
-        <asp:TextBox ID="txtPrice" runat="server" style="z-index: 1; left: 153px; top: 252px; position: absolute"></asp:TextBox>
-        <asp:TextBox ID="txtAvailable" runat="server" style="z-index: 1; left: 140px; top: 361px; position: absolute"></asp:TextBox>
-        <asp:TextBox ID="txtOrder" runat="server" style="z-index: 1; left: 141px; top: 416px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtPrice" runat="server" style="z-index: 1; left: 177px; top: 249px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtAvailable" runat="server" style="z-index: 1; left: 177px; top: 359px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtOrder" runat="server" style="z-index: 1; left: 177px; top: 413px; position: absolute"></asp:TextBox>
     </form>
 </body>
 </html>
