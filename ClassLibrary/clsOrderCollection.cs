@@ -8,6 +8,9 @@ namespace ClassLibrary
 
         //private data member for the list
         List<clsOrder> mOrderList = new List<clsOrder>();
+        //private data member for this address
+        clsOrder mThisOrder = new clsOrder();
+
         public List<clsOrder> OrderList
         {
             get
@@ -30,7 +33,20 @@ namespace ClassLibrary
                 //complete later
             }
         }
-        public clsOrder ThisOrder { get; set; }
+        //public property for thisOrder
+        public clsOrder ThisOrder
+        {
+            //return the private data
+            get
+            {
+                return mThisOrder;
+            }
+            //set the private data member
+            set
+            {
+                mThisOrder = value;
+            }
+        }
 
         //costructor for the class
         public clsOrderCollection()
@@ -63,6 +79,15 @@ namespace ClassLibrary
                 //point at the next record
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            //adds a record to the database based on the value of mThisOrder
+            //set the primary key value of the new record
+            mThisOrder.OrderId = 123;
+            //return the primary key of the new record
+            return mThisOrder.OrderId;
         }
     }
 }
