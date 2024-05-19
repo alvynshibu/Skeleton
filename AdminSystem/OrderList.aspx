@@ -15,7 +15,7 @@
     
    
     <form id="form1" runat="server">
-        <asp:ListBox ID="lstOrderList" runat="server" Height="173px" Width="203px"></asp:ListBox>
+        <asp:ListBox ID="lstOrderList" runat="server" Height="173px" Width="203px"></asp:ListBox><asp:Button runat="server" Text="Button" ID="btnAdd" OnClick="btnAdd_Click"></asp:Button>
     </form>
     
    

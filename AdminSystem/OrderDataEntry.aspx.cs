@@ -53,10 +53,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             anOrder.DeliveryAddress = deliveryAddress;
             //capture date added
             anOrder.DateAdded = Convert.ToDateTime(dateAdded);
-            //store order in session order
-            Session["anOrder"] = anOrder;
+            //create instance of collection
+            clsOrderCollection OrderList = new clsOrderCollection();
+            //set this order property
+            OrderList.ThisOrder = anOrder;
+            //add the new record
+            OrderList.Add();
             //navigate to view page
-            Response.Redirect("OrderViewer.aspx");
+            Response.Redirect("OrderList.aspx");
 
         }
         else

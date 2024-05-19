@@ -85,9 +85,17 @@ namespace ClassLibrary
         {
             //adds a record to the database based on the value of mThisOrder
             //set the primary key value of the new record
-            mThisOrder.OrderId = 123;
-            //return the primary key of the new record
-            return mThisOrder.OrderId;
+            clsDataConnection DB = new clsDataConnection();
+            //set parameters for stored procedure
+            DB.AddParameter("@CustomerId", mThisOrder.CustomerId);
+            DB.AddParameter("@DeliveryAddress", mThisOrder.DeliveryAddress);
+            DB.AddParameter("@OrderDate", mThisOrder.DateAdded);
+            DB.AddParameter("@DeliveryStatus", mThisOrder.DeliveryStatus);
+            DB.AddParameter("@TotalAmount", mThisOrder.TotalAmount);
+            DB.AddParameter("@StaffId", mThisOrder.StaffId);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblOrder_Insert");
         }
     }
 }
