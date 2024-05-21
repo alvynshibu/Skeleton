@@ -3,10 +3,18 @@ using System.Collections.Generic;
 
 namespace ClassLibrary
 {
+
+
+
+
+
     public class clsCustomerCollection
     {
         //private data member for the list
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        //private member data for thisCustomer
+        clsCustomer mThisCustomer = new clsCustomer();
+
 
         //public property for the address list
         public List<clsCustomer> CustomerList
@@ -37,7 +45,19 @@ namespace ClassLibrary
             }
         }
 
-        public clsCustomer ThisCustomer { get; set; }
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                //return the private data
+                return mThisCustomer;
+            }
+            set
+            {
+                //set the private data
+                mThisCustomer = value;
+            }
+        }
 
         //constructor for the class
         public clsCustomerCollection()
@@ -71,5 +91,27 @@ namespace ClassLibrary
                 Index++;
             }
         }
-    }
+
+        public int Add()
+        {
+            //adds a record to the dataase based on the values of mThisCustomer
+            // connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
+            DB.AddParameter("@RegistrationDate", mThisCustomer.RegistrationDate);
+            DB.AddParameter("@CustomerName", mThisCustomer.CustomerName);
+            DB.AddParameter("@EmailNotification", mThisCustomer.EmailNotification);
+            DB.AddParameter("@PhoneNumber", mThisCustomer.PhoneNumber);
+            DB.AddParameter("@CustomerAddress", mThisCustomer.CustomerAddress);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblCustomer_Insert");
+        }
+
+
+
+
+
+        }
 }
