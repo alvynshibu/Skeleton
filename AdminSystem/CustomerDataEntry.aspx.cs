@@ -53,10 +53,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.PhoneNumber = PhoneNumber;
             //capture the registration date
             ACustomer.RegistrationDate = Convert.ToDateTime(RegistrationDate);
-            //store the customer in the session object
-            Session["ACustomer"] = ACustomer;
-            //Navigate to the view page
-            Response.Redirect("CustomerViewer.aspx");
+            //capture email notification
+            ACustomer.EmailNotification = chkEmailNotifications.Checked;
+            //create a new instance of the customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //set the ThisCustomer property
+            CustomerList.ThisCustomer = ACustomer;
+            //add the new record
+            CustomerList.Add();
+            //redirect back to the list page
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
