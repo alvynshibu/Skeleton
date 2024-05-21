@@ -12,15 +12,15 @@ public partial class _1_List : System.Web.UI.Page
     {
         if (IsPostBack == false)
         {
-            DisplayStock();
+            DisplayStocks();
         }
     }
 
-        void DisplayStock()
+        void DisplayStocks()
         {
             clsStockCollection aStock = new clsStockCollection();
             lstStockList.DataSource = aStock.StockList;
-            lstStockList.DataValueField = "SupplierId";
+            lstStockList.DataValueField = "StockId";
             lstStockList.DataTextField = "ItemName";
             lstStockList.DataBind();
         }
