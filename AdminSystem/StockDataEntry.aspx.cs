@@ -15,10 +15,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
     public bool Available { get; private set; }
     public DateTime OrderDate { get; private set; }
 
-    protected void Page_Load(object sender, EventArgs e)
-    {
-
-    }
 
 
 
