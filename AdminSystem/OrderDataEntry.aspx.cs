@@ -9,9 +9,20 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //gt the number of order to be processed
+        OrderId = Convert.ToInt32(Session["OrderId"]);
+        if(IsPostBack == false)
+        {
+            //if this is not a new record
+            if(OrderId != -1)
+            {
+                //display the current data for the record
+                DisplayOrder();
+            }
+        }
     }
 
     protected void txtOrderId_TextChanged(object sender, EventArgs e)
@@ -41,6 +52,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = anOrder.Valid(customerId, deliveryAddress, dateAdded, totalAmount, staffId);
         if (Error == "")
         {
+            //capture the order id
+            anOrder.OrderId = OrderId;
             //capture total amount
             anOrder.TotalAmount = totalAmount;
             //capture delivery status
@@ -55,43 +68,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
             anOrder.DateAdded = Convert.ToDateTime(dateAdded);
             //create instance of collection
             clsOrderCollection OrderList = new clsOrderCollection();
-            //set this order property
-            OrderList.ThisOrder = anOrder;
-            //add the new record
-            OrderList.Add();
-            //navigate to view page
+            //if this is a new record i.e. OrderId = -1 then add the data
+            if (OrderId == -1)
+            {
+                //set te thisorder property
+                OrderList.ThisOrder = anOrder;
+                //add new record
+                OrderList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //fnd the record to update
+                OrderList.ThisOrder.Find(OrderId);
+                //set the thisOrder property
+                OrderList.ThisOrder = anOrder;
+                //update record
+                OrderList.Update();
+            }
+            //redirect to list page
             Response.Redirect("OrderList.aspx");
 
         }
         else
         {
+            //display error message
             lblError.Text = Error;
         }
-        /*if (string.IsNullOrWhiteSpace(txtOrderId.Text) ||
-         string.IsNullOrWhiteSpace(txtCustomerId.Text) ||
-         string.IsNullOrWhiteSpace(txtDeliveryAddress.Text) ||
-         string.IsNullOrWhiteSpace(txtOrderDate.Text) ||
-         string.IsNullOrWhiteSpace(txtTotalAmount.Text) ||
-         string.IsNullOrWhiteSpace(txtStaffId.Text))
-        {
-            lblError.Text = "Please fill in all fields";
-            return;
-        }
-        //create a new instance of clsOrder
-        clsOrder anOrder = new clsOrder();
-        //capture order id
-        anOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
-        anOrder.CustomerId = Convert.ToInt32(txtCustomerId.Text);
-        anOrder.DeliveryAddress = txtDeliveryAddress.Text;
-        anOrder.DateAdded = Convert.ToDateTime(txtOrderDate.Text);
-        anOrder.DeliveryStatus = chkDeliveryStatus.Checked;
-        anOrder.TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
-        anOrder.StaffId = Convert.ToInt32(txtStaffId.Text);
-        //store address in session object
-        Session["anOrder"] = anOrder;
-
-        //navigate to view page
-        Response.Redirect("OrderViewer.aspx");*/
+       
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -129,6 +133,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
             lblError.Text = "Order ID not found";
         }
 
+    }
+
+    void DisplayOrder()
+    {
+        //instance of class
+        clsOrderCollection OrderBook = new clsOrderCollection();
+        //find the record
+        OrderBook.ThisOrder.Find(OrderId);
+        //display test data
+        txtOrderId.Text = OrderBook.ThisOrder.OrderId.ToString();
+        txtCustomerId.Text = OrderBook.ThisOrder.CustomerId.ToString();
+        txtDeliveryAddress.Text = OrderBook.ThisOrder.DeliveryAddress.ToString();
+        txtOrderDate.Text = OrderBook.ThisOrder.DateAdded.ToString();
+        chkDeliveryStatus.Checked = OrderBook.ThisOrder.DeliveryStatus;
+        txtTotalAmount.Text = OrderBook.ThisOrder.TotalAmount.ToString();
+        txtStaffId.Text = OrderBook.ThisOrder.StaffId.ToString();
     }
 
    
