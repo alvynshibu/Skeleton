@@ -97,5 +97,22 @@ namespace ClassLibrary
             //execute the query returning the primary key value
             return DB.Execute("sproc_tblOrder_Insert");
         }
+
+        public void Update()
+        {
+            //updates ecisting record based on OrderId
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //set parameters for the new stored proceure
+            DB.AddParameter("@Orderid", mThisOrder.OrderId);
+            DB.AddParameter("@CustomerId", mThisOrder.CustomerId);
+            DB.AddParameter("@DeliveryAddress", mThisOrder.DeliveryAddress);
+            DB.AddParameter("@OrderDate", mThisOrder.DateAdded);
+            DB.AddParameter("@DeliveryStatus", mThisOrder.DeliveryStatus);
+            DB.AddParameter("@TotalAmount", mThisOrder.TotalAmount);
+            DB.AddParameter("@StaffId", mThisOrder.StaffId);
+            //execute stored procedure
+            DB.Execute("sproc_tblOrder_Update");
+        }
     }
 }
