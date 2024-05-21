@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ClassLibrary
 {
@@ -8,7 +9,8 @@ namespace ClassLibrary
         clsStock TestItem = new clsStock();
 
         List<clsStock> mStockList = new List<clsStock>();
-        
+        clsStock mThisStock = new clsStock();
+
         public List<clsStock> StockList
         {
             get
@@ -31,9 +33,21 @@ namespace ClassLibrary
                 //we shall worry about this later
             }
         }
-        public clsStock ThisStock { get; set; }
+        public clsStock ThisStock
+        {
+            get
+            {
+                //return the private data
+                return mThisStock;
+            }
+            set
+            {
+                mThisStock = value;
+            }
+
+        }
         public clsStockCollection()
-    {
+        {
             Int32 Index = 0;
             Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
@@ -48,14 +62,22 @@ namespace ClassLibrary
                 AStock.Price = Convert.ToInt32(DB.DataTable.Rows[Index]["Price"]);
                 AStock.SupplierId = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierId"]);
                 AStock.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
-                TestItem.Available = Convert.ToBoolean(DB.DataTable.Rows[Index]["Available"]);
-                mStockList.Add(TestItem);
+                AStock.Available = Convert.ToBoolean(DB.DataTable.Rows[Index]["Available"]);
+                mStockList.Add(AStock);
                 Index++;
             }
-        
-    }
-    }
+        }
 
-   
-
+        public int Add()
+        {
+            mThisStock.StockId = 123;
+            return mThisStock.StockId;
+        }
+    }
 }
+
+
+
+
+
+
