@@ -21,6 +21,8 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         //instance of order collection classs
         clsOrderCollection OrderBook = new clsOrderCollection();
         //find record to delete
+        OrderBook.ThisOrder.Find(OrderId);
+        //find record to delete
         OrderBook.Delete();
         //redirect to orderlist page
         Response.Redirect("OrderList.aspx");
