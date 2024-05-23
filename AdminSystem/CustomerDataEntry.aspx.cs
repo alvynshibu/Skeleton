@@ -136,11 +136,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         CustomerBook.ThisCustomer.Find(CustomerId);
         //display the data for the record
         txtCustomerId.Text = CustomerBook.ThisCustomer.CustomerId.ToString();
-        txtCustomerId.Text = CustomerBook.ThisCustomer.CustomerName.ToString();
-        txtCustomerId.Text = CustomerBook.ThisCustomer.CustomerEmail.ToString();
-        txtCustomerId.Text = CustomerBook.ThisCustomer.CustomerAddress.ToString();
-        txtCustomerId.Text = CustomerBook.ThisCustomer.PhoneNumber.ToString();
-        txtCustomerId.Text = CustomerBook.ThisCustomer.RegistrationDate.ToString();
+        txtCustomerName.Text = CustomerBook.ThisCustomer.CustomerName;
+        txtCustomerEmail.Text = CustomerBook.ThisCustomer.CustomerEmail;
+        txtCustomerAddress.Text = CustomerBook.ThisCustomer.CustomerAddress;
+        txtPhoneNumber.Text = CustomerBook.ThisCustomer.PhoneNumber;
+        txtRegistrationDate.Text = CustomerBook.ThisCustomer.RegistrationDate.ToString();
         chkEmailNotifications.Checked = CustomerBook.ThisCustomer.EmailNotification;
     }
 }

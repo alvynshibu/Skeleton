@@ -15,6 +15,7 @@
         <br />
         <br />
         <br />
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 173px; top: 405px; position: absolute; height: 23px; width: 57px" Text="Delete" />
         <br />
         <br />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 32px; top: 448px; position: absolute"></asp:Label>
