@@ -95,7 +95,14 @@ namespace ClassLibrary
 
 
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StockId", mThisStock.StockId);
+            DB.Execute("sproc_tblStock_Delete");
         }
+    }
     }
 
 

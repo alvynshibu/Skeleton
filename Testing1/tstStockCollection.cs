@@ -123,6 +123,29 @@ namespace Testing1
             AllStock.ThisStock.Find(PrimaryKey);
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
+
+        [TestMethod]
+
+       public void DeleteMethodOK()
+        {
+            clsStockCollection ALLStock = new clsStockCollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.StockId = 1;
+            TestItem.ItemName = "Test";
+            TestItem.Quantity = 2; 
+            TestItem.Price = 1;
+            TestItem.SupplierId = 1;
+            TestItem.OrderDate = DateTime.Now;
+            TestItem.Available = true;
+            ALLStock.ThisStock = TestItem;
+            PrimaryKey = ALLStock.Add();
+            TestItem.StockId = PrimaryKey;
+            ALLStock.ThisStock.Find(PrimaryKey);
+            ALLStock.Delete();
+            Boolean Found = ALLStock.ThisStock.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
         }
 
     }
