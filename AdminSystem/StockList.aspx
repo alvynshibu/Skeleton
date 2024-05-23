@@ -10,8 +10,15 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:Button runat="server" Text="Add" ID="btnAdd" OnClick="btnAdd_Click"></asp:Button>
         <asp:ListBox ID="lstStockList" runat="server" Height="278px" Width="260px"></asp:ListBox>
+        
+        <p>
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" Width="60px" />
+        <asp:Button runat="server" Text="Add" ID="btnAdd" OnClick="btnAdd_Click"></asp:Button>
+        </p>
+        <p>
+            <asp:Label ID="lblError" runat="server" Text="lblError"></asp:Label>
+        </p>
         
     </form>
 </body>
