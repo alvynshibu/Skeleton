@@ -195,17 +195,13 @@ namespace Testing4
             //find the record
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             //delete the record
-            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
-            //delete the record
-            AllCustomers.Delete;
+            AllCustomers.Delete();
             //now find the record
             Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
             //test to see that the record was not found
             Assert.IsFalse(Found);
 
         }
-
-
 
     }
 }
