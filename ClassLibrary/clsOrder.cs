@@ -179,7 +179,7 @@ namespace ClassLibrary
                 Error = Error + "The date was not a valid date";
             }
             //if total amount is less than 0
-            if(totalAmount < (decimal)0.00)
+            if(totalAmount < (decimal)0.00 || totalAmount == null)
             {
                 Error = Error + "The total price cannot be less than 0 : ";
             }
