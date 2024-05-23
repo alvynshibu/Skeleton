@@ -23,25 +23,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStock aStock = new clsStock();
-        aStock.StockId = Convert.ToInt32(txtStockId.Text);
-        aStock.ItemName = txtItemName.Text;
-        aStock.Quantity = Convert.ToInt32(txtQuantity.Text);
-        aStock.Price = Convert.ToDecimal(txtPrice.Text);
-        aStock.SupplierId = Convert.ToInt32(txtSupplierId.Text);
-        aStock.Available = CheckBox1.Checked;
-        aStock.OrderDate = Convert.ToDateTime(DateTime.Now);
+        string StockId = txtStockId.Text;
+        string ItemName = txtItemName.Text;
+        string Quantity = txtQuantity.Text;
+        string Price = txtPrice.Text;
+        string SupplierId = txtSupplierId.Text;
+        string Available = txtAvailable.Text;
+        string OrderDate = txtOrder.Text;
         string Error = "";
-        Error = aStock.Valid(txtItemName.Text, txtQuantity.Text, txtPrice.Text, txtSupplierId.Text, txtAvailable.Text, DateTime.Now.ToString());
+        Error = aStock.Valid(ItemName, Quantity, Price, SupplierId, Available, OrderDate);
         if (Error == "")
         {
             aStock.ItemName = ItemName;
-            aStock.Quantity = Quantity;
-            aStock.Price = Price;
-            aStock.SupplierId = SupplierId;
-            aStock.Available = Available;
+            aStock.Quantity = Convert.ToInt32(Quantity);
+            aStock.Price = Convert.ToDecimal(Price);
+            aStock.SupplierId = Convert.ToInt32(SupplierId);
+            aStock.Available = Convert.ToBoolean(Available);
             aStock.OrderDate = Convert.ToDateTime(OrderDate);
+            clsStockCollection StockList = new clsStockCollection();
+            StockList.ThisStock = aStock;
+            StockList.Add();
             Session["aStock"] = aStock;
-            Response.Redirect("StockViewer.aspx");
+            Response.Redirect("StockList.aspx");
         }
         else
         {
