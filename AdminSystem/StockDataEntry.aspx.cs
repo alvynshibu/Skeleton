@@ -19,11 +19,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
 
-
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStock aStock = new clsStock();
-        string StockId = txtStockId.Text;
         string ItemName = txtItemName.Text;
         string Quantity = txtQuantity.Text;
         string Price = txtPrice.Text;
@@ -34,6 +32,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = aStock.Valid(ItemName, Quantity, Price, SupplierId, Available, OrderDate);
         if (Error == "")
         {
+            aStock.StockId = StockId;
             aStock.ItemName = ItemName;
             aStock.Quantity = Convert.ToInt32(Quantity);
             aStock.Price = Convert.ToDecimal(Price);
@@ -41,9 +40,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             aStock.Available = Convert.ToBoolean(Available);
             aStock.OrderDate = Convert.ToDateTime(OrderDate);
             clsStockCollection StockList = new clsStockCollection();
-            StockList.ThisStock = aStock;
-            StockList.Add();
-            Session["aStock"] = aStock;
+            if (StockId == -1)
+            {
+                StockList.ThisStock = aStock;
+                StockList.Add();
+            }
+            else
+            {
+                StockList.ThisStock.Find(StockId);
+                StockList.ThisStock = aStock;
+                StockList.Update();
+            }
             Response.Redirect("StockList.aspx");
         }
         else
@@ -76,6 +83,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtAvailable.Text = aStock.Available.ToString();
             txtOrder.Text = aStock.OrderDate.ToString();
         }
+
+    }
+
+    Int32 StockId;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        StockId = Convert.ToInt32(Session["StockId"]);
+        if (IsPostBack == false)
+        {
+            if (StockId != -1)
+            {
+                DisplayStocks();
+            }
+        }
+    }
+
+    void DisplayStocks()
+    {
+        clsStockCollection Stocklist = new clsStockCollection();
+
+        Stocklist.ThisStock.Find(StockId);
+        txtStockId.Text = Stocklist.ThisStock.StockId.ToString();
+        txtStockId.Text = Stocklist.ThisStock.ItemName;
+        txtStockId.Text = Stocklist.ThisStock.Quantity.ToString();
+        txtPrice.Text = Stocklist.ThisStock.Price.ToString();
+        txtStockId.Text = Stocklist.ThisStock.SupplierId.ToString();
+        txtStockId.Text = Stocklist.ThisStock.OrderDate.ToString();
+        txtStockId.Text = Stocklist.ThisStock.Available.ToString();
 
     }
 }
