@@ -35,7 +35,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of the class
         clsOrder anOrder = new clsOrder();
         //capture total amount
-        decimal totalAmount = Convert.ToDecimal(txtTotalAmount.Text);
+        decimal totalAmount;
+        if (!string.IsNullOrWhiteSpace(txtTotalAmount.Text))
+        {
+            totalAmount = Convert.ToDecimal(txtTotalAmount.Text);
+        }
+        else
+        {
+            totalAmount = (decimal)-0.01;
+        }
+        
         //capture customer id
         string customerId = txtCustomerId.Text;
         //capture the staff id
@@ -144,7 +153,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //display test data
         txtOrderId.Text = OrderBook.ThisOrder.OrderId.ToString();
         txtCustomerId.Text = OrderBook.ThisOrder.CustomerId.ToString();
-        txtDeliveryAddress.Text = OrderBook.ThisOrder.DeliveryAddress.ToString();
+        txtDeliveryAddress.Text = OrderBook.ThisOrder.DeliveryAddress;
         txtOrderDate.Text = OrderBook.ThisOrder.DateAdded.ToString();
         chkDeliveryStatus.Checked = OrderBook.ThisOrder.DeliveryStatus;
         txtTotalAmount.Text = OrderBook.ThisOrder.TotalAmount.ToString();

@@ -74,7 +74,7 @@ public partial class _1_List : System.Web.UI.Page
             //get the primary key value of record to be deleted
             OrderId = Convert.ToInt32(lstOrderList.SelectedValue);
             //store the data in the session object
-            Session["Orderid"] = OrderId;
+            Session["OrderId"] = OrderId;
             //redirect to the delete page
             Response.Redirect("OrderConfirmDelete.aspx");
         }
