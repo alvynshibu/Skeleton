@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 
 namespace ClassLibrary
@@ -52,21 +54,9 @@ namespace ClassLibrary
             Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblStock_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsStock AStock = new clsStock();
-                AStock.StockId = Convert.ToInt32(DB.DataTable.Rows[Index]["StockId"]);
-                AStock.ItemName = Convert.ToString(DB.DataTable.Rows[Index]["ItemName"]);
-                AStock.Quantity = Convert.ToInt32(DB.DataTable.Rows[Index]["Quantity"]);
-                AStock.Price = Convert.ToInt32(DB.DataTable.Rows[Index]["Price"]);
-                AStock.SupplierId = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierId"]);
-                AStock.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
-                AStock.Available = Convert.ToBoolean(DB.DataTable.Rows[Index]["Available"]);
-                mStockList.Add(AStock);
-                Index++;
+            PopulateArray(DB);
             }
-        }
+        
 
         public int Add()
         {
@@ -77,7 +67,7 @@ namespace ClassLibrary
             DB.AddParameter("@SupplierId", mThisStock.SupplierId);
             DB.AddParameter("@OrderDate", mThisStock.OrderDate);
             DB.AddParameter("@Available", mThisStock.Available);
-            
+
             return DB.Execute("sproc_tblStock_Insert");
         }
 
@@ -102,9 +92,47 @@ namespace ClassLibrary
             DB.AddParameter("@StockId", mThisStock.StockId);
             DB.Execute("sproc_tblStock_Delete");
         }
-    }
-    }
 
+        public void ReportByItemName(string ItemName)
+        {
+            //filters the records based on a full or partial ItemName;
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ItemName", ItemName);
+            DB.Execute("sproc_tblStock_FilterByItemName");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populate the array list based on the data table in the parameter DB
+
+            Int32 Index = 0;
+
+            Int32 RecordCount;
+
+            RecordCount = DB.Count;
+
+            mStockList = new List<clsStock>();
+            while (Index < RecordCount)
+            {
+                clsStock AStock = new clsStock();
+                AStock.StockId = Convert.ToInt32(DB.DataTable.Rows[Index]["StockId"]);
+                AStock.ItemName = Convert.ToString(DB.DataTable.Rows[Index]["ItemName"]);
+                AStock.Quantity = Convert.ToInt32(DB.DataTable.Rows[Index]["Quantity"]);
+                AStock.Price = Convert.ToInt32(DB.DataTable.Rows[Index]["Price"]);
+                AStock.SupplierId = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierId"]);
+                AStock.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
+                AStock.Available = Convert.ToBoolean(DB.DataTable.Rows[Index]["Available"]);
+                mStockList.Add(AStock);
+                Index++;
+
+
+            }
+        }
+    }
+}
+    
 
 
 
