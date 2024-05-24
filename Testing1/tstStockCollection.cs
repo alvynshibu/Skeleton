@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -126,14 +127,14 @@ namespace Testing1
 
         [TestMethod]
 
-       public void DeleteMethodOK()
+        public void DeleteMethodOK()
         {
             clsStockCollection ALLStock = new clsStockCollection();
             clsStock TestItem = new clsStock();
             Int32 PrimaryKey = 0;
             TestItem.StockId = 1;
             TestItem.ItemName = "Test";
-            TestItem.Quantity = 2; 
+            TestItem.Quantity = 2;
             TestItem.Price = 1;
             TestItem.SupplierId = 1;
             TestItem.OrderDate = DateTime.Now;
@@ -146,11 +147,59 @@ namespace Testing1
             Boolean Found = ALLStock.ThisStock.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
+
+        [TestMethod]
+
+        public void ReportByItemNameMethodOK()
+        {
+            clsStockCollection ALLStock = new clsStockCollection();
+            clsStockCollection FilteredStock = new clsStockCollection();
+            FilteredStock.ReportByItemName("");
+            Assert.AreEqual(ALLStock.Count, FilteredStock.Count);
         }
 
+        [TestMethod]
+
+        public void ReportByItemNameNoneFound()
+        {
+            clsStockCollection FilteredStock = new clsStockCollection();
+            FilteredStock.ReportByItemName("xxx xxx");
+            Assert.AreEqual(0, FilteredStock.Count);
+        }
+
+        [TestMethod]
+        public void ReportByItemNameTestDataFound()
+        {
+            clsStockCollection FilteredStock = new clsStockCollection();
+            Boolean OK = true;
+            FilteredStock.ReportByItemName("yyy yyy");
+
+            if (FilteredStock.Count == 2)
+            {
+                if (FilteredStock.StockList[0].StockId != 25)
+                {
+                    OK = false;
+                }
+                if (FilteredStock.StockList[1].StockId != 26)
+                {
+                    OK = false;
+                }
+
+            }
+
+            else
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+
+
+        }
     }
+}
+
+
 
     
             
-
-

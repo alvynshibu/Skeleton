@@ -8,12 +8,32 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
-    public string ItemName { get; private set; }
-    public int Quantity { get; private set; }
-    public decimal Price { get; private set; }
-    public int SupplierId { get; private set; }
-    public bool Available { get; private set; }
-    public DateTime OrderDate { get; private set; }
+    Int32 StockId;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        StockId = Convert.ToInt32(Session["StockId"]);
+        if (IsPostBack == false)
+        {
+            if (StockId != -1)
+            {
+                DisplayStocks();
+            }
+        }
+    }
+
+    void DisplayStocks()
+    {
+        clsStockCollection Stocklist = new clsStockCollection();
+
+        Stocklist.ThisStock.Find(StockId);
+        txtStockId.Text = Stocklist.ThisStock.StockId.ToString();
+        txtItemName.Text = Stocklist.ThisStock.ItemName;
+        txtQuantity.Text = Stocklist.ThisStock.Quantity.ToString();
+        txtPrice.Text = Stocklist.ThisStock.Price.ToString();
+        txtSupplierId.Text = Stocklist.ThisStock.SupplierId.ToString();
+        txtOrder.Text = Stocklist.ThisStock.OrderDate.ToString();
+        chkAvailable.Text = Stocklist.ThisStock.Available.ToString();
+    }
 
 
 
@@ -26,7 +46,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Quantity = txtQuantity.Text;
         string Price = txtPrice.Text;
         string SupplierId = txtSupplierId.Text;
-        string Available = txtAvailable.Text;
+        string Available = chkAvailable.Text;
         string OrderDate = txtOrder.Text;
         string Error = "";
         Error = aStock.Valid(ItemName, Quantity, Price, SupplierId, Available, OrderDate);
@@ -80,37 +100,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtQuantity.Text = aStock.Quantity.ToString();
             txtPrice.Text = aStock.Price.ToString();
             txtSupplierId.Text = aStock.SupplierId.ToString(); 
-            txtAvailable.Text = aStock.Available.ToString();
+            chkAvailable.Text = aStock.Available.ToString();
             txtOrder.Text = aStock.OrderDate.ToString();
         }
 
-    }
-
-    Int32 StockId;
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        StockId = Convert.ToInt32(Session["StockId"]);
-        if (IsPostBack == false)
-        {
-            if (StockId != -1)
-            {
-                DisplayStocks();
-            }
-        }
-    }
-
-    void DisplayStocks()
-    {
-        clsStockCollection Stocklist = new clsStockCollection();
-
-        Stocklist.ThisStock.Find(StockId);
-        txtStockId.Text = Stocklist.ThisStock.StockId.ToString();
-        txtStockId.Text = Stocklist.ThisStock.ItemName;
-        txtStockId.Text = Stocklist.ThisStock.Quantity.ToString();
-        txtPrice.Text = Stocklist.ThisStock.Price.ToString();
-        txtStockId.Text = Stocklist.ThisStock.SupplierId.ToString();
-        txtStockId.Text = Stocklist.ThisStock.OrderDate.ToString();
-        txtStockId.Text = Stocklist.ThisStock.Available.ToString();
+    
 
     }
 }
