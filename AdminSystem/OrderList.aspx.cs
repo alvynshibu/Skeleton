@@ -16,6 +16,12 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayOrders();
         }
+        //create an instance of clsOrderUser
+        clsOrderUser aUser = new clsOrderUser();
+        //get data from the session object
+        aUser = (clsOrderUser)Session["aUser"];
+        //display user name
+        Response.Write("Logged in as: " + aUser.UserName);
     }
 
     void DisplayOrders()
@@ -31,6 +37,10 @@ public partial class _1_List : System.Web.UI.Page
         //bind the data to the list
         lstOrderList.DataBind();
     }
+
+
+
+
 
 
 
@@ -97,7 +107,7 @@ public partial class _1_List : System.Web.UI.Page
         //set name of primary key
         lstOrderList.DataValueField = "OrderId";
         //set name of field to display
-        lstOrderList.DataTextField = "DeliveryAddress";
+        lstOrderList.DataTextField = "DeliveryStatus";
         //bind the data
         lstOrderList.DataBind();
     }
@@ -115,8 +125,14 @@ public partial class _1_List : System.Web.UI.Page
         //set name of primary key
         lstOrderList.DataValueField = "OrderId";
         //set name of field to display
-        lstOrderList.DataTextField = "DeliveryAddress";
+        lstOrderList.DataTextField = "DeliveryStatus";
         //bind the data
         lstOrderList.DataBind();
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
