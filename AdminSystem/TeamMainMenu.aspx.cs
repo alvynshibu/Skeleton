@@ -17,4 +17,10 @@ public partial class TeamMainMenu : System.Web.UI.Page
         //redirect user to order login page
         Response.Redirect("OrderLogin.aspx");
     }
+
+    protected void btnCustomers_Click(object sender, EventArgs e)
+    {
+        //redirect user to customer login page
+        Response.Redirect("CustomerLogin.aspx");
+    }
 }

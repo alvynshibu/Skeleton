@@ -19,7 +19,7 @@
         <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 130px; top: 152px; position: absolute; height: 16px; width: 148px" TextMode="Password"></asp:TextBox>
         <asp:Label ID="lblError" runat="server" ForeColor="#FF3300" style="z-index: 1; left: 54px; top: 193px; position: absolute; height: 23px; width: 232px"></asp:Label>
         <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" style="z-index: 1; left: 92px; top: 235px; position: absolute; height: 24px; width: 73px; right: 483px" Text="Login" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 187px; top: 235px; position: absolute; height: 25px; width: 74px" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 187px; top: 235px; position: absolute; height: 25px; width: 74px" Text="Cancel" OnClick="btnCancel_Click" />
     </form>
 </body>
 </html>
