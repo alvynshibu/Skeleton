@@ -35,9 +35,10 @@
         <p>
             <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="margin-left: 157px" Text="Apply Filter" Width="101px" />
             <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="margin-left: 50px" Text="Clear Filter" Width="142px" />
+            <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click1" style="z-index: 1; left: 501px; top: 374px; position: absolute; width: 166px" Text="Return to Main Menu" />
         </p>
         <p>
-            <asp:Label ID="lblError" runat="server" Text="lblError"></asp:Label>
+            <asp:Label ID="lblError" runat="server" ForeColor="#FF3300"></asp:Label>
         </p>
 
         

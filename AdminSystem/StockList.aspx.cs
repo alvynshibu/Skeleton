@@ -60,7 +60,7 @@ public partial class _1_List : System.Web.UI.Page
         Int32 StockId;
         if (lstStockList.SelectedIndex != -1)
         {
-            StockId = Convert.ToInt32(lstStockList.SelectedValue);
+            StockId = Convert.ToInt32(lstStockList.SelectedIndex);
             Session["StockId"] = StockId;
             Response.Redirect("StockConfirmDelete.aspx");
         }
@@ -93,6 +93,10 @@ public partial class _1_List : System.Web.UI.Page
         lstStockList.DataBind();
     }
 
-    
+
+    protected void btnMainMenu_Click1(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
 

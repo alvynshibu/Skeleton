@@ -22,6 +22,7 @@ public partial class StockLogin : System.Web.UI.Page
         UserName = Convert.ToString(txtUserName.Text);
         Password = Convert.ToString(txtPassword.Text);
         Found = AnUser.FindUser(UserName, Password);
+        Session["AnUser"] = AnUser;
         if (txtUserName.Text == "")
         {
             lblError.Text = "Enter  username";

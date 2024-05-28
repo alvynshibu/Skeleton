@@ -33,7 +33,7 @@
         <asp:Label ID="lblOrderDate" runat="server" style="z-index: 1; left: 19px; top: 410px; position: absolute" Text="OrderDate"></asp:Label>
         <p>
         </p>
-        <asp:Label ID="lblError" runat="server" Text="lblError" Style="z-index: 1; left: 26px; top: 478px; position: absolute"></asp:Label>
+        <asp:Label ID="lblError" runat="server" Style="z-index: 1; left: 26px; top: 478px; position: absolute" ForeColor="#FF3300"></asp:Label>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 25px; top: 519px; position: absolute" Text="OK" />
         <p>
             <asp:Button ID="btnCancel" runat="server" Style="z-index: 1; left: 117px; top: 520px; position: absolute" Text="Cancel" />
@@ -43,6 +43,11 @@
         <asp:TextBox ID="chkAvailable" runat="server" style="z-index: 1; left: 177px; top: 359px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="txtOrder" runat="server" style="z-index: 1; left: 177px; top: 413px; position: absolute"></asp:TextBox>
         <asp:CheckBox ID="CheckBox1" runat="server" style="z-index: 1; left: 179px; top: 479px; position: absolute" Text="Active" />
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="z-index: 1; left: 253px; top: 521px; position: absolute; height: 23px" Text="Return to Main Menu" />
+        </p>
     </form>
 </body>
             
