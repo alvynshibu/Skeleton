@@ -10,7 +10,7 @@ public partial class StockLogin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+       
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
@@ -22,6 +22,8 @@ public partial class StockLogin : System.Web.UI.Page
         UserName = Convert.ToString(txtUserName.Text);
         Password = Convert.ToString(txtPassword.Text);
         Found = AnUser.FindUser(UserName, Password);
+        //Add a session to capture the user name
+        Session["AnUser"] = AnUser;
         if (txtUserName.Text == "")
         {
             lblError.Text = "Enter  username";
@@ -38,5 +40,10 @@ public partial class StockLogin : System.Web.UI.Page
         {
             lblError.Text = "Login details are incorrect. Plese try again";
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

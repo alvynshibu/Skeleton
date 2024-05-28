@@ -17,6 +17,13 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayStocks();
         }
+
+        clsStockUser AnUser = new clsStockUser();
+        //get data from the session objct
+        AnUser = (clsStockUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as:" + AnUser.UserName);
+
     }
 
     void DisplayStocks()
