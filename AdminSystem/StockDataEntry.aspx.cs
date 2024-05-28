@@ -116,6 +116,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnMainMenu_Click(object sender, EventArgs e)
     {
-        Response.Redirect("TeamMainMenu.apx");
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
