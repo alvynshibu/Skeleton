@@ -51,6 +51,7 @@
     <Compile Include="clsOrderUser.cs" />
     <Compile Include="clsStock.cs" />
     <Compile Include="clsStockCollection.cs" />
+    <Compile Include="clsStockUser.cs" />
     <Compile Include="clsSupplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
