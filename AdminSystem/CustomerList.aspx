@@ -29,6 +29,7 @@
         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 99px; top: 404px; position: absolute" Text="Edit" />
         <br />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 32px; top: 570px; position: absolute; height: 22px;"></asp:Label>
+        <asp:Button ID="btnReturnToMainMenu" runat="server" style="z-index: 1; left: 309px; top: 516px; position: absolute; width: 139px; height: 28px; bottom: 121px" Text="Return To Main Menu" />
         <br />
         <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 32px; top: 518px; position: absolute; height: 26px; width: 109px; right: 736px" Text="Apply Filter" />
         <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 163px; top: 518px; position: absolute; width: 121px" Text="Clear Filter" />

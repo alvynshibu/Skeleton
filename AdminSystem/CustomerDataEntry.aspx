@@ -29,6 +29,7 @@
         <p>
             &nbsp;</p>
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 354px; top: 27px; position: absolute; width: 79px; height: 27px" Text="Find" />
+        <asp:Button ID="btnReturnToMainMenu" runat="server" style="z-index: 1; left: 177px; top: 342px; position: absolute; height: 24px; width: 150px" Text="Return To Main Menu" />
     </form>
 </body>
 </html>

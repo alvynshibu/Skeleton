@@ -18,6 +18,13 @@ public partial class _1_List : System.Web.UI.Page
             DisplayCustomers();
         }
 
+        //create a new instance of clsCustomerUser
+        clsCustomerUser AnUser = new clsCustomerUser();
+        //get data from thhe session object
+        AnUser = (clsCustomerUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
+
     }
 
     void DisplayCustomers()
