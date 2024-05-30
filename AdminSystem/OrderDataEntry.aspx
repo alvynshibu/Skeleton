@@ -31,7 +31,7 @@
             <asp:TextBox ID="txtDeliveryAddress" runat="server" style="z-index: 1; left: 132px; top: 107px; position: absolute; width: 186px; margin-top: 0px" Height="20px"></asp:TextBox>
         </p>
         &nbsp;<p>
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 99px; top: 330px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 99px; top: 330px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
         </p>
         <p>
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 342px; top: 23px; position: absolute; height: 26px" Text="Find" />
