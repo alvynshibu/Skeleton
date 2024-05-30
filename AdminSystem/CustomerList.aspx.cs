@@ -97,13 +97,13 @@ public partial class _1_List : System.Web.UI.Page
         //create an instance of the customer object
         clsCustomerCollection ACustomer = new clsCustomerCollection();
         //retrieve the value of the customer email from the presentation layer
-        ACustomer.ReportByCustomerEmail(txtFilter.Text);
+        ACustomer.ReportByCustomerName(txtFilter.Text);
         //set the data source to the list of customers in the collection
         lstCustomerList.DataSource = ACustomer.CustomerList;
         //set the name of the primary key
         lstCustomerList.DataValueField = "CustomerId";
         //set the name of the field to display
-        lstCustomerList.DataTextField = "CustomerEmail";
+        lstCustomerList.DataTextField = "CustomerName";
         //bind the data to the list
         lstCustomerList.DataBind();
     }
@@ -113,7 +113,7 @@ public partial class _1_List : System.Web.UI.Page
         //create an instance of the customer object
         clsCustomerCollection ACustomer = new clsCustomerCollection();
         //set an empty string
-        ACustomer.ReportByCustomerEmail("");
+        ACustomer.ReportByCustomerName("");
         //clear any excisting filter to tidy up the interface
         txtFilter.Text = "";
         //set the data source to the list of customers in the collection
@@ -121,7 +121,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstCustomerList.DataValueField = "CustomerId";
         //set the name of the field to display
-        lstCustomerList.DataTextField = "CustomerEmail";
+        lstCustomerList.DataTextField = "CustomerName";
         //bind the data to the list
         lstCustomerList.DataBind();
     }

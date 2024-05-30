@@ -116,15 +116,15 @@ namespace ClassLibrary
             DB.Execute("sproc_tblCustomer_Delete");
         }
 
-        public void ReportByCustomerEmail(string CustomerEmail)
+        public void ReportByCustomerName(string CustomerName)
         {
             //filters the records based on a full or partial post code
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
             //send the customer email parameter to the database
-            DB.AddParameter("@CustomerEmail", CustomerEmail);
+            DB.AddParameter("@CustomerName", CustomerName);
             //execute the stored procedure
-            DB.Execute("sproc_tblCustomer_FilterByCustomerEmail");
+            DB.Execute("sproc_tblCustomer_FilterByCustomerName");
             //populate the array list with the data table
             PopulateArray(DB);
         }
