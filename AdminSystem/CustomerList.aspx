@@ -21,7 +21,7 @@
         <br />
         <br />
         <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 173px; top: 405px; position: absolute; height: 23px; width: 57px" Text="Delete" />
-        <asp:Label ID="lblFilter" runat="server" style="z-index: 1; left: 28px; top: 467px; position: absolute; width: 104px" Text="Enter an Email:"></asp:Label>
+        <asp:Label ID="lblFilter" runat="server" style="z-index: 1; left: 28px; top: 467px; position: absolute; width: 104px" Text="Enter a Name:"></asp:Label>
         <br />
         <br />
         <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 141px; top: 464px; position: absolute; height: 22px; width: 156px"></asp:TextBox>
