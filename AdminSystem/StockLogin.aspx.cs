@@ -40,4 +40,9 @@ public partial class StockLogin : System.Web.UI.Page
             lblError.Text = "Login details are incorrect. Plese try again";
         }
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }

@@ -36,7 +36,7 @@
         <asp:Label ID="lblError" runat="server" Style="z-index: 1; left: 26px; top: 478px; position: absolute" ForeColor="#FF3300"></asp:Label>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 25px; top: 519px; position: absolute" Text="OK" />
         <p>
-            <asp:Button ID="btnCancel" runat="server" Style="z-index: 1; left: 117px; top: 520px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" Style="z-index: 1; left: 117px; top: 520px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
             <asp:TextBox ID="txtSupplierId" runat="server" style="z-index: 1; left: 177px; top: 310px; position: absolute"></asp:TextBox>
         </p>
         <asp:TextBox ID="txtPrice" runat="server" style="z-index: 1; left: 177px; top: 249px; position: absolute"></asp:TextBox>

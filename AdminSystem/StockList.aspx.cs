@@ -60,7 +60,7 @@ public partial class _1_List : System.Web.UI.Page
         Int32 StockId;
         if (lstStockList.SelectedIndex != -1)
         {
-            StockId = Convert.ToInt32(lstStockList.SelectedIndex);
+            StockId = Convert.ToInt32(lstStockList.SelectedValue);
             Session["StockId"] = StockId;
             Response.Redirect("StockConfirmDelete.aspx");
         }
