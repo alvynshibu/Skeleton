@@ -36,14 +36,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsOrder anOrder = new clsOrder();
         //capture total amount
         decimal totalAmount;
-        if (!string.IsNullOrWhiteSpace(txtTotalAmount.Text))
+
+        if (!decimal.TryParse(txtTotalAmount.Text, out totalAmount))
         {
-            totalAmount = Convert.ToDecimal(txtTotalAmount.Text);
+            lblError.Text += "Total amount must be in price format: ";
+            //temporary placeholder to allow me to chang error label if input is not decimal as the error label doesnt change with above statement
+            totalAmount = (decimal)-00100.0;
         }
-        else
-        {
-            totalAmount = (decimal)-0.01;
+        else {
+            if (!string.IsNullOrWhiteSpace(txtTotalAmount.Text))
+            {
+                totalAmount = Convert.ToDecimal(txtTotalAmount.Text);
+            }
+            else
+            {
+                totalAmount = (decimal)-0.01;
+            }
         }
+        
         
         //capture customer id
         string customerId = txtCustomerId.Text;

@@ -176,15 +176,20 @@ namespace ClassLibrary
             catch
             {
                 //record the error
-                Error = Error + "The date was not a valid date";
+                Error = Error + "The date was not a valid date : ";
+            }
+            //temporary if statement that allows me to change error label
+            if(totalAmount == (decimal)-00100.0)
+            {
+                Error = Error + "The total price has to be in price format : ";
             }
             //if total amount is less than 0
-            if(totalAmount < (decimal)0.00 || totalAmount == null)
+            else if(totalAmount < (decimal)0.00)
             {
                 Error = Error + "The total price cannot be less than 0 : ";
             }
             //if the customer id is blank
-            if(customerId.Length == 0)
+            if (customerId.Length == 0)
             {
                 Error = Error + "Customer ID cannot be blank : ";
             }
