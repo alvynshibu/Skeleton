@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using ClassLibrary;
 
 namespace Testing5
 {
@@ -97,6 +98,8 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AnStaff.Address, TestData);
         }
+
+
 
 
 
