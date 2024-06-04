@@ -16,7 +16,25 @@ public partial class _1Viewer : System.Web.UI.Page
         //get data from session object
         AnStaff = (clsStaff)Session["AnStaff"];
         //display the Name
-        Response.Write(AnStaff.Name);
+        Response.Write(AnStaff.Name); 
+
+        Response.Write(AnStaff.DateOfBirth);
+
+        Response.Write(AnStaff.Email);
+
+        Response.Write(AnStaff.Notification);
+
+        Response.Write(AnStaff.Address);
+
+
+
+
+
+
+
+
+
+
 
     }
 }
