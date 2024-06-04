@@ -18,10 +18,12 @@ namespace ClassLibrary
         {
             get
             {
+                //return user id
                 return mUserId;
             }
             set
             {
+                //set private data
                 mUserId = value;
             }
         }
@@ -29,10 +31,12 @@ namespace ClassLibrary
         {
             get
             {
+                //return username
                 return mUserName;
             }
             set
             {
+                //set private data
                 mUserName = value;
             }
         }
@@ -40,10 +44,12 @@ namespace ClassLibrary
         {
             get
             {
+                //return password
                 return mPassword;
             }
             set
             {
+                //set private data
                 mPassword = value;
             }
         }
@@ -51,10 +57,12 @@ namespace ClassLibrary
         {
             get
             {
+                //return department
                 return mDepartment;
             }
             set
             {
+                //set private data
                 mDepartment = value;
             }
         }

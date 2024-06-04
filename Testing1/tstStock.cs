@@ -20,70 +20,99 @@ namespace Testing1
         [TestMethod]
         public void InstanceOK()
         {
+            //create an instance of the class we want to create
             clsStock aStock = new clsStock();
-
+            //test to see that it exists
             Assert.IsNotNull(aStock);
         }
 
         [TestMethod]
         private static void aStockIdPropertyOK()
         {
+            //create an instance of the class we want to create
             clsStock aStock = new clsStock();
+            //create some data to assign to the property
             Int32 TestData = 1;
+            //assign the data to the property
             aStock.StockId = TestData;
+            //test to see that the two values are the same
             Assert.AreEqual(aStock.StockId, TestData);
         }
 
         [TestMethod]
         public void ItemNamePropertyOK()
         {
+            //create an instance of the class we want to create
             clsStock aStock = new clsStock();
+            //create some data to assign to the property
             string TestData = "gkgk";
+            //assign the data to the property
             aStock.ItemName = TestData;
+            //test to see that the two values are the same
             Assert.AreEqual(aStock.ItemName, TestData);
 
         }
 
         public void QuantityPropertyOK()
         {
+            //create an instance of the class we want to create
             clsStock aStock = new clsStock();
+            //create some data to assign to the property
             Int32 TestData = 132;
+            //assign the data to the property
             aStock.Quantity = TestData;
+            //test to see that the two values are the same
             Assert.AreEqual(aStock.Quantity, TestData);
 
         }
 
         public void PricePropertyOK()
         {
+            //create an instance of the class we want to create
             clsStock aStock = new clsStock();
+            //create some data to assign to the property
             decimal TestData = 10;
+            //assign the data to the property
             aStock.Price = TestData;
+            //test to see that the two values are the same
             Assert.AreEqual(aStock.Price, TestData);
         }
         [TestMethod]
         public void SupplierIdPropertyOK()
         {
+            //create an instance of the class we want to create
             clsStock aStock = new clsStock();
+            //create some data to assign to the property
             Int32 TestData = 765;
+            //assign the data to the property
             aStock.SupplierId = TestData;
+            //test to see that the two values are the same
             Assert.AreEqual(aStock.SupplierId, TestData);
 
         }
         [TestMethod]
         public void AvailablePropertyOK()
         {
+            //create an instance of the class we want to create
             clsStock aStock = new clsStock();
+            //create some data to assign to the property
             bool TestData = true;
+            //assign the data to the property
             aStock.Available = TestData;
+            //test to see that the two values are the same
             Assert.AreEqual(aStock.Available, TestData);
         }
 
         [TestMethod]
         public void OrderDatePropertyOK()
         {
+            //create an instance of the class we want to create
             clsStock aStock = new clsStock();
+            //assign the data to the property
             DateTime TestData = DateTime.Now.Date;
+            //assign the data to the property
             aStock.OrderDate = TestData;
+            //test to see that the two values are the same
             Assert.AreEqual(aStock.OrderDate, TestData);
         }
 
@@ -91,10 +120,15 @@ namespace Testing1
 
         public void FindMethodOK()
         {
+            //create an instance of the class we want to create
             clsStock aStock = new clsStock();
+            //assign the data to the property
             Boolean Found = false;
+            //create some test data to use with the method
             Int32 aStockId = 16;
+            //invoke the method
             Found = aStock.Find(aStockId);
+            //test to see that the two values are the same
             Assert.IsTrue(Found);
         }
 
@@ -590,10 +624,15 @@ namespace Testing1
         [TestMethod]
         public void DateAddedInvalidData()
         {
+            //create an instance of the class we want to create
             clsStock aStock = new clsStock();
+            //string c=variable to store any error message
             String Error = "";
+            //convert the date variable to a string variable
             string DateAdded = "this is not a date!";
+            //invoke the method
             Error = aStock.Valid(ItemName, Quantity, Price, SupplierId, Available, DateAdded);
+            //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
 
         }
