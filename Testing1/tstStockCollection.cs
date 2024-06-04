@@ -172,15 +172,15 @@ namespace Testing1
         {
             clsStockCollection FilteredStock = new clsStockCollection();
             Boolean OK = true;
-            FilteredStock.ReportByItemName("yyy yyy");
+            FilteredStock.ReportByItemName("Coke");
 
             if (FilteredStock.Count == 2)
             {
-                if (FilteredStock.StockList[0].StockId != 25)
+                if (FilteredStock.StockList[0].StockId != 19)
                 {
                     OK = false;
                 }
-                if (FilteredStock.StockList[1].StockId != 26)
+                if (FilteredStock.StockList[1].StockId != 1210)
                 {
                     OK = false;
                 }
