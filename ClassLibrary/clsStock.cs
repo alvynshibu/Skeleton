@@ -5,13 +5,19 @@ namespace ClassLibrary
 {
     public class clsStock
     {
-        //private data member for the address id property
+        //private data member for the Stock id property
         private Int32 mStockId;
+
         private string mItemName;
+        //private data member for quantity property
         private int mQuantity;
+        //private data member for price property
         private decimal mPrice;
+        //private data member for supplierid property
         private int mSupplierId;
+        //private data member for available property
         private bool mAvailable;
+        //private data member for date added property
         private DateTime mOrderDate;
 
         //StockId public property
@@ -24,6 +30,7 @@ namespace ClassLibrary
             }
             set
             {
+                //this line of code allows data into the property
                 mStockId = value;
             }
         }
@@ -33,8 +40,10 @@ namespace ClassLibrary
         {
             get
             {
+                //return line of code sends data out of the property
                 return mItemName;
             }
+            //this line of code allows data into the property
             set { mItemName = value; }
         }
 
@@ -42,8 +51,10 @@ namespace ClassLibrary
         {
             get
             {
+                //return line of code sends data out of the property
                 return mQuantity;
             }
+            //this line of code allows data into the property
             set { mQuantity = value; }
         }
 
@@ -51,8 +62,10 @@ namespace ClassLibrary
         {
             get
             {
+                //return line of code sends data out of the property
                 return mPrice;
             }
+            //this line of code allows data into the property
             set { mPrice = value; }
         }
 
@@ -60,8 +73,10 @@ namespace ClassLibrary
         {
             get
             {
+                //return line of code sends data out of the property
                 return mSupplierId;
             }
+            //this line of code allows data into the property
             set { mSupplierId = value; }
         }
 
@@ -69,8 +84,10 @@ namespace ClassLibrary
         {
             get
             {
+                //return line of code sends data out of the property
                 return mAvailable;
             }
+            //this line of code allows data into the property
             set { mAvailable = value; }
         }
 
@@ -78,8 +95,10 @@ namespace ClassLibrary
         {
             get
             {
+                //return line of code sends data out of the property
                 return mOrderDate;
             }
+            //this line of code allows data into the property
             set { mOrderDate = value; }
         }
 
