@@ -107,7 +107,6 @@ namespace Testing5
 
 
 
-
         //Find Method
 
         [TestMethod]
@@ -118,12 +117,12 @@ namespace Testing5
             //create a booolean variable to store the results of the validation
             Boolean Found = false;
             //create some test to data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //test to see if the result is true
             Assert.IsTrue(Found);
-;
+            ;
         }
 
         [TestMethod]
@@ -137,11 +136,11 @@ namespace Testing5
             //create a booolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the staff id
-            if (AnStaff.StaffId != 21)
+            if (AnStaff.StaffId != 1)
             {
                 OK = false;
             }
@@ -160,18 +159,18 @@ namespace Testing5
             //create a booolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the staff id
-            if (AnStaff.Name != "x")
+            if (AnStaff.Name != "Sakib")
             {
                 OK = false;
             }
             //test to see the result is correct
             Assert.IsTrue(OK);
         }
-        
+
 
         [TestMethod]
 
@@ -184,11 +183,11 @@ namespace Testing5
             //create a booolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check dateofbirth property
-            if (AnStaff.DateOfBirth != Convert.ToDateTime("30/08/2002"))
+            if (AnStaff.DateOfBirth != Convert.ToDateTime("29/12/2001"))
             {
                 OK = false;
             }
@@ -207,11 +206,11 @@ namespace Testing5
             //create a booolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the staff id
-            if (AnStaff.Email != "l@gmail.com")
+            if (AnStaff.Email != "sakib@gmail.com")
             {
                 OK = false;
             }
@@ -230,11 +229,11 @@ namespace Testing5
             //create a booolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the staff id
-            if (AnStaff.Address != "kk")
+            if (AnStaff.Address != "Leicester")
             {
                 OK = false;
             }
@@ -253,7 +252,7 @@ namespace Testing5
             //create a booolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the staff id
@@ -264,5 +263,7 @@ namespace Testing5
             //test to see the result is correct
             Assert.IsTrue(OK);
         }
+
+
     }
 }
