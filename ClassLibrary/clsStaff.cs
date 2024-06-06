@@ -138,5 +138,78 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string name, string dateOfBirth, string email, string address)
+        {
+            //create a string varibale to store the error
+            String Error = "";
+
+            //Cretae a temporay variable to store date values
+            DateTime DateTemp;
+
+
+            //if the name is blank
+            if (name.Length == 0)
+            {
+                //record the error
+                Error = Error + "The name may not be blank<br>";
+            }
+
+            if (name.Length > 50)
+            {
+                Error = Error + "The name character must be less than 50";
+            }
+
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+               
+                
+                DateTemp = Convert.ToDateTime(dateOfBirth);
+
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The date cannot be in the past";
+                }
+
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The date cannot be in the future";
+                }
+            }
+            catch (FormatException)
+            {
+                Error = Error + "The date of birth is not vaild date.";
+            }
+
+
+            //if the email is blank
+            if (email.Length == 0)
+            {
+                //record the error
+                Error = Error + "The email may not be blank<br>";
+            }
+
+            if (email.Length > 50)
+            {
+                Error = Error + "The email character must be less than 50";
+            }
+
+            //if the address is blank
+            if (address.Length == 0)
+            {
+                //record the error
+                Error = Error + "The address may not be blank<br>";
+            }
+
+            if (address.Length > 50)
+            {
+                Error = Error + "The address character must be less than 50";
+            }
+            //return any error message
+            return Error;
+            
+        }
     }
 }

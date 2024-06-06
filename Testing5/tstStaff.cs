@@ -10,6 +10,12 @@ namespace Testing5
     [TestClass]
     public class tstStaff
     {
+        //good test data
+        //create some test data to pass the method
+        string Name = "Sakib";
+        string DateOfBirth = DateTime.Now.ToShortDateString();
+        string Email = "sakib@gmail.com";
+        string Address = "Leicester";
         [TestMethod]
         public void InstanceOK()
         {
@@ -21,11 +27,12 @@ namespace Testing5
 
 
         [TestMethod]
-        public void NotificationPropertyOK() {
-            
+        public void NotificationPropertyOK()
+        {
+
             clsStaff AnStaff = new clsStaff();
 
-            Boolean TestData= true;
+            Boolean TestData = true;
 
             AnStaff.Notification = TestData;
 
@@ -48,7 +55,7 @@ namespace Testing5
 
         }
 
-        
+
 
         [TestMethod]
         public void StaffIdPropertyOK()
@@ -264,6 +271,545 @@ namespace Testing5
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
 
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+
+        }
+        [TestMethod]
+
+        public void NameMinLessOne()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+
+
+        }
+
+        [TestMethod]
+
+        public void NameMin()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "n";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void NameMinPlusOne()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void NameMaxLessOne()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void NameMax()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void NameMid()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nnnnnnnnnnnnnnnnnnnnnnnnn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void NameMaxPlusOne()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void NameExtremeMax()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "";
+            Name = Name.PadRight(500, 'n');
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+
+
+        }
+
+
+        [TestMethod]
+        public void DateOfBirthMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string DateOfBirth = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestData = DateTime.Now.Date;
+
+            //convert the date variable to a string variable
+            string DateOfBirth = TestData.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateOfBirthMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestData;
+            //set the date totodays date
+            TestData = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestData = TestData.AddDays(1);
+
+            //convert the date variable to a string variable
+            string DateOfBirth = TestData.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthInvalidDataType()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+           //set the DateOfBirth to a non date value
+            string DateOfBirth = "This is not a date!";
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+
+        public void EmailMinLessOne()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+
+
+        }
+
+        [TestMethod]
+
+        public void EmailMin()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "n";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void EmailMinPlusOne()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void EmailMaxLessOne()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void EmailMax()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void EmailMid()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nnnnnnnnnnnnnnnnnnnnnnnnn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void EmailMaxPlusOne()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void EmailExtremeMax()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "";
+            Name = Name.PadRight(500, 'n');
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+
+
+        }
+
+        [TestMethod]
+
+        public void AddressMinLessOne()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+
+
+        }
+
+        [TestMethod]
+
+        public void AddressMin()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "n";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void AddressMinPlusOne()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void AddressMaxLessOne()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void AddressMax()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void AddressMid()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nnnnnnnnnnnnnnnnnnnnnnnnn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void AddressMaxPlusOne()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn";
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void AddressExtremeMax()
+        {
+            //create an instance of the class we want to crate
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = "";
+            Name = Name.PadRight(500, 'n');
+
+            //invoke the method
+            Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+
+
+        }
     }
 }
+
+
