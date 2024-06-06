@@ -35,4 +35,12 @@ public partial class StaffList : System.Web.UI.Page
         lstStaffList.DataBind();
 
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 into the seesion object to indicate this is new record
+        Session["StaffId"] = -1;
+        //redirect to the data entry page
+        Response.Redirect("StaffDataEntry.aspx");
+    }
 }

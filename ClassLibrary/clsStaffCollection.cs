@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 
 
 namespace ClassLibrary
@@ -8,6 +9,7 @@ namespace ClassLibrary
     {
         //private data memebr for the list
         List<clsStaff> mStaffList = new List<clsStaff>();
+        clsStaff mThisStaff = new clsStaff();
         public List<clsStaff> StaffList 
         { 
             get
@@ -35,7 +37,19 @@ namespace ClassLibrary
 
         
         }
-        public clsStaff ThisStaff { get; set; }
+        public clsStaff ThisStaff 
+        { 
+            get
+            {
+                //return the private data
+                return mThisStaff;
+            }
+            set
+            {
+                //set the private data
+                mThisStaff = value;
+            }
+        }
 
         //Constructor for the clas
 
@@ -69,6 +83,22 @@ namespace ClassLibrary
                 //point at the next record
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            //add a record to the database based on the valued of mthis staff
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Name", mThisStaff.Name);
+            DB.AddParameter("@DateOfBirth", mThisStaff.DateOfBirth);
+            DB.AddParameter("@Email", mThisStaff.Email);
+            DB.AddParameter("@Address", mThisStaff.Address);
+            DB.AddParameter("@Notification", mThisStaff.Notification);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_TblStaff_Insert");
         }
     }
 }
