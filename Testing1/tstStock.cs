@@ -476,6 +476,8 @@ namespace Testing1
             Assert.AreEqual(Error, "");
 
         }
+
+
         [TestMethod]
         public void PriceMinLessone()
         {
@@ -521,6 +523,59 @@ namespace Testing1
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
+
+        [TestMethod]
+        public void PriceMaxLessone()
+        {
+            //create an instance of the class we want to create
+            clsStock aStock = new clsStock();
+            //string c=variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string Price = ""; //this should trigger an error
+            Price = Price.PadRight(17, '1');
+            //invoke the method
+            Error = aStock.Valid(ItemName, Quantity, Price, SupplierId, Available, OrderDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void PriceMax()
+        {
+            //create an instance of the class we want to create
+            clsStock aStock = new clsStock();
+            //string c=variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string Price = ""; //this should trigger an error
+            Price = Price.PadRight(18, '1');
+            //invoke the method
+            Error = aStock.Valid(ItemName, Quantity, Price, SupplierId, Available, OrderDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+
+        }
+
+        [TestMethod]
+        public void PriceMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock aStock = new clsStock();
+            //string c=variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string Price = ""; //this should trigger an error
+            Price = Price.PadRight(19, '1');
+            //invoke the method
+            Error = aStock.Valid(ItemName, Quantity, Price, SupplierId, Available, OrderDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
 
         [TestMethod]
         public void DateAddedExtremeMin()

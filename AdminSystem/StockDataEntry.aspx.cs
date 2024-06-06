@@ -22,6 +22,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 //display the current data for the record
                 DisplayStocks();
             }
+            else
+            {
+                txtStockId.Text = StockId.ToString();
+                txtStockId.Enabled = false;
+                btnFind.Enabled = false;
+            }
         }
     }
 
