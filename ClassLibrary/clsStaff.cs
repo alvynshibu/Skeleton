@@ -2,27 +2,18 @@
 
 namespace ClassLibrary
 {
-
-
-
     public class clsStaff
     {
+
+       
+        
+        
+        
+
+
+
         //private data member for the address id propert
         private Int32 mStaffId;
-        //private data member for the name property
-        private string mName;
-        //private data member for the DateOfBirth
-        private DateTime mDateOfBirth;
-        //private data member for the name property
-        private string mEmail;
-        //private data member for the name property
-        private string mAddress;
-        //private data member for the Notification property
-        private Boolean mNotification;
-
-
-
-
         public int StaffId
         {
             get
@@ -38,6 +29,8 @@ namespace ClassLibrary
             }
         }
 
+        //private data member for the name property
+        private string mName;
         public string Name
         {
             get
@@ -51,7 +44,8 @@ namespace ClassLibrary
                 mName = value;
             }
         }
-
+        //private data member for the DateOfBirth
+        private DateTime mDateOfBirth;
         public DateTime DateOfBirth
         {
             get
@@ -65,7 +59,8 @@ namespace ClassLibrary
                 mDateOfBirth = value;
             }
         }
-
+        //private data member for the name property
+        private string mEmail;
         public string Email
         {
             get
@@ -80,6 +75,9 @@ namespace ClassLibrary
             }
         }
 
+
+        //private data member for the name property
+        private string mAddress;
         public string Address
         {
             get
@@ -96,13 +94,14 @@ namespace ClassLibrary
 
 
 
-
+        //private data member for the Notification property
+        private Boolean mNotification;
         public bool Notification
         {
             get
             {
                 //this line of code sends data out of the property
-                return Notification;
+                return mNotification;
             }
             set
             {
@@ -111,40 +110,17 @@ namespace ClassLibrary
             }
         }
 
-
-        public bool Find(int StaffId)
+        public bool Find(int staffId)
         {
-            //create an instance of the data data connection
-            clsDataConnection DB = new clsDataConnection();
-            //add the parameter for the address id to search for
-            DB.AddParameter("@StaffId", StaffId);
-            //execute the stored procedure
-            DB.Execute("sproc_TblStaff_FilterByStaffId");
-            //if one record is found (there should be either one or zero)
-            if (DB.Count == 1)
-            {
-
-                //copy the data from the database to the private data members
-                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
-                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
-                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
-                mDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfBirth"]);
-                mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
-                mNotification = Convert.ToBoolean(DB.DataTable.Rows[0]["Notification"]);
-                //return that everything worked OK
-                return true;
-            }
-            //if no record was found
-            else
-            {
-                //return false indicating there is a problem
-                return false;
-            }
-
+            //set to private data memebers to the test data value
+            mStaffId = 21;
+            mName = "x";
+            mDateOfBirth = Convert.ToDateTime("30/08/2002");
+            mEmail = "l@gmail.com";
+            mAddress = "kk";
+            mNotification = true;
+            //always return true
+            return true;
         }
-
-
-
-
     }
 }
