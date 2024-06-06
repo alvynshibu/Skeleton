@@ -16,35 +16,42 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
 
+        //create a new instance of clsStaff
         clsStaff AnStaff = new clsStaff();
+        //capture the Name
+        string Name = txtName.Text;
+        //capture the date of birth
+        string DateOfBirth = txtDateOfBirth.Text;
+        //capture the email
+        string Email = txtEmail.Text;
+        //capture the address
+        string Address = txtAddress.Text;
+        //capture the notification
+        string Notification = chkNotification.Text;
+        //varibale tom store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
+        if (Error == "")
+        {
+            //capture the name
+            AnStaff.Name = Name;
+            AnStaff.DateOfBirth = Convert.ToDateTime(DateOfBirth);
+            AnStaff.Email = Email;
+            AnStaff.Address = Address;
+            //store the satff in the seesion object
+            Session["AnStaff"] = AnStaff;
+            //navigate to the view page
+            Response.Redirect("StaffViewer.aspx");
+        }
 
-        AnStaff.Name = txtName.Text;
-        Session["AnStaff"] = AnStaff;
-        //navigate to the view page
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
 
-
-        Response.Redirect("StaffViewer.aspx");
-
-        //capture the notificaion
-        AnStaff.Notification=chkNotification.Checked;
-        ;
-
-        //capture the Date Added
-        AnStaff.DateOfBirth = Convert.ToDateTime(DateTime.Now);
-       
-
-        //Email
-        AnStaff.Email = txtEmail.Text;
-       
-
-
-
-        //Address
-        AnStaff.Address = txtAddress.Text;
         
-
-
-        Response.Redirect("StaffViewer.aspx");
 
 
 
