@@ -39,10 +39,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStaff.DateOfBirth = Convert.ToDateTime(DateOfBirth);
             AnStaff.Email = Email;
             AnStaff.Address = Address;
-            //store the satff in the seesion object
-            Session["AnStaff"] = AnStaff;
+            AnStaff.Notification = chkNotification.Checked;
+            //create a new instance of the address collection
+            clsStaffCollection StaffList = new clsStaffCollection();
+            //set the thistaff proprty
+            StaffList.ThisStaff = AnStaff;
+            //add new record
+            StaffList.Add();
             //navigate to the view page
-            Response.Redirect("StaffViewer.aspx");
+            Response.Redirect("StaffList.aspx");
         }
 
         else
