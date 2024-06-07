@@ -83,4 +83,39 @@ public partial class StaffList : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to delete";
         }
     }
+
+    protected void btnFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the customer object
+        clsStaffCollection AnStaff = new clsStaffCollection();
+        //retrieve the value of the customer email from the presentation layer
+        AnStaff.ReportByName(txtFilter.Text);
+        
+        //set the data source to the list of customers in the collection
+        lstStaffList.DataSource = AnStaff.StaffList;
+        //set the name of the primary key
+        lstStaffList.DataValueField = "StaffId";
+        //set the name of the field to display
+        lstStaffList.DataTextField = "Name";
+        //bind the data to the list
+        lstStaffList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        //create an instance of the customer object
+        clsStaffCollection AnStaff = new clsStaffCollection();
+        //set an empty string
+        AnStaff.ReportByName("");
+        //clear any excisting filter to tidy up the interface
+        txtFilter.Text = "";
+        //set the data source to the list of customers in the collection
+        lstStaffList.DataSource = AnStaff.StaffList;
+        //set the name of the primary key
+        lstStaffList.DataValueField = "StaffId";
+        //set the name of the field to display
+        lstStaffList.DataTextField = "Name";
+        //bind the data to the list
+        lstStaffList.DataBind();
+    }
 }
