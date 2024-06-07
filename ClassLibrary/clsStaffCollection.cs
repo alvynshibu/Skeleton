@@ -117,5 +117,16 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_TblStaff_Update");
         }
+
+        public void Delete()
+        {
+            //delete the recors pinted to by this staff
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set yhe parameter for the stores procredure
+            DB.AddParameter("@StaffId", mThisStaff.StaffId);
+            //execute the store procedure
+            DB.Execute("sproc_TblStaff_Delete");
+        }
     }
 }

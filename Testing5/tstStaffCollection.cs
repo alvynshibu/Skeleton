@@ -176,5 +176,41 @@ namespace Testing5
 
         }
 
+
+
+        [TestMethod]
+
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create the item of test data
+            clsStaff TestItem = new clsStaff();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.StaffId = 5;
+            TestItem.Name = "Sakib";
+            TestItem.DateOfBirth = DateTime.Now;
+            TestItem.Email = "sakib@gmail.com";
+            TestItem.Address = "Leicester";
+            TestItem.Notification = true;
+            //set ThisCustomer to the test data
+            AllStaff.ThisStaff = TestItem;
+            //add the record
+            PrimaryKey = AllStaff.Add();
+            //set the primary key of the test data
+            TestItem.StaffId = PrimaryKey;
+            //find the record
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            //delete the record
+            AllStaff.Delete();
+            //now find the record
+            Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+
+        }
+
     }
 }
