@@ -8,11 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 StaffId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the staff to be processed
+        StaffId = Convert.ToInt32(Session["StaffId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if(StaffId != -1)
+            {
+                //display the current data for the record
+                DisplayStaff();
+            }
+        }
     }
 
+    void DisplayStaff()
+    {
+        //create an instance of the staff 
+        clsStaffCollection StaffBook = new clsStaffCollection();
+        //find the record to update
+        StaffBook.ThisStaff.Find(StaffId);
+        //display the data for the record
+        txtStaffId.Text = StaffBook.ThisStaff.StaffId.ToString();
+        txtName.Text = StaffBook.ThisStaff.Name.ToString();
+        txtDateOfBirth.Text = StaffBook.ThisStaff.DateOfBirth.ToString();
+        txtEmail.Text = StaffBook.ThisStaff.Email.ToString();
+        txtAddress.Text = StaffBook.ThisStaff.Address.ToString();
+        chkNotification.Text = StaffBook.ThisStaff.Notification.ToString();
+
+    }
     protected void btnOK_Click(object sender, EventArgs e)
     {
 
@@ -34,6 +60,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnStaff.Valid(Name, DateOfBirth, Email, Address);
         if (Error == "")
         {
+            //capture the staff id
+            AnStaff.StaffId = StaffId;
             //capture the name
             AnStaff.Name = Name;
             AnStaff.DateOfBirth = Convert.ToDateTime(DateOfBirth);
