@@ -70,11 +70,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStaff.Notification = chkNotification.Checked;
             //create a new instance of the address collection
             clsStaffCollection StaffList = new clsStaffCollection();
-            //set the thistaff proprty
-            StaffList.ThisStaff = AnStaff;
-            //add new record
-            StaffList.Add();
-            //navigate to the view page
+            
+            //if this is a new record i.e StaffId = -1 then add the data
+            if(StaffId == -1)
+            {
+                //set the ThisStaff proprty
+                StaffList.ThisStaff = AnStaff;
+                //add the new record
+                StaffList.Add();
+            }
+            else
+            {
+                //find the rceird to update
+                StaffList.ThisStaff.Find(StaffId);
+                //set the THISsTAFF proprtty
+                StaffList.ThisStaff = AnStaff;
+                //UPDATE the recird
+                StaffList.Update();
+            }
+
             Response.Redirect("StaffList.aspx");
         }
 
