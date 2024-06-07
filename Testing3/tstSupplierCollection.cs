@@ -68,7 +68,6 @@ namespace Testing3
         }
 
         [TestMethod]
-
         public void ListAndCountOK()
         {
             //create an instance of the class we want to create
@@ -96,7 +95,6 @@ namespace Testing3
         }
 
         [TestMethod]
-
         public void AddMethodOK()
         {
             //create an instance of the class we want to create
@@ -124,10 +122,8 @@ namespace Testing3
             //test to see that the two values are the same
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
 
-        }
 
         [TestMethod]
-
         public void UpdateMethodOK()
         {
             //create an instance of the class we want to create
@@ -169,7 +165,6 @@ namespace Testing3
         }
 
         [TestMethod]
-
         public void DeleteMethodOK()
         {
             //create an instance of the class we want to create
@@ -200,7 +195,6 @@ namespace Testing3
             Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
             //test to see that the record was not found
             Assert.IsFalse(Found);
-
         }
 
         [TestMethod]
