@@ -50,10 +50,10 @@ namespace Testing3
             string testData = "Supplier Name";
 
             // Assign the data to the property
-            aSupplier.Name = testData;
+            aSupplier.SupplierName = testData;
 
             // Test to see that the two values are the same
-            Assert.AreEqual(aSupplier.Name, testData);
+            Assert.AreEqual(aSupplier.SupplierName, testData);
         }
 
         [TestMethod]
@@ -66,10 +66,10 @@ namespace Testing3
             string testData = "John Doe";
 
             // Assign the data to the property
-            aSupplier.ContactPerson = testData;
+            aSupplier.SupplierContactPerson = testData;
 
             // Test to see that the two values are the same
-            Assert.AreEqual(aSupplier.ContactPerson, testData);
+            Assert.AreEqual(aSupplier.SupplierContactPerson, testData);
         }
 
         [TestMethod]
@@ -82,10 +82,10 @@ namespace Testing3
             string testData = "supplier@gmail.co.uk"; // Using ".co.uk" for England-based email
 
             // Assign the data to the property
-            aSupplier.Email = testData;
+            aSupplier.SupplierEmail = testData;
 
             // Test to see that the two values are the same
-            Assert.AreEqual(aSupplier.Email, testData);
+            Assert.AreEqual(aSupplier.SupplierEmail, testData);
         }
 
         [TestMethod]
@@ -98,10 +98,10 @@ namespace Testing3
             string testData = "+44 1234 567890"; // UK phone format
 
             // Assign the data to the property
-            aSupplier.Phone = testData;
+            aSupplier.SupplierPhoneNumber = testData;
 
             // Test to see that the two values are the same
-            Assert.AreEqual(aSupplier.Phone, testData);
+            Assert.AreEqual(aSupplier.SupplierPhoneNumber, testData);
         }
 
         [TestMethod]
@@ -114,11 +114,49 @@ namespace Testing3
             string testData = "123 High Street, London, England, SW1A 1AA"; // Sample address in London
 
             // Assign the data to the property
-            aSupplier.Address = testData;
+            aSupplier.SupplierAddress = testData;
 
             // Test to see that the two values are the same
-            Assert.AreEqual(aSupplier.Address, testData);
+            Assert.AreEqual(aSupplier.SupplierAddress, testData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsSupplier aSupplier = new clsSupplier();
+            //create a boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 SupplierId = 1;
+            //invoke the method
+            Found = aSupplier.Find(SupplierId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestSupplierIdFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplier aSupplier = new clsSupplier();
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 SupplierId = 5;
+            //invoke the method
+            Found = aSupplier.Find(SupplierId);
+            //check the supplier id
+            if (aSupplier.SupplierId != 5)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
 
     }
 }
