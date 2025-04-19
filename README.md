@@ -4,5 +4,5 @@ Database was created using SQL and contains the following tables: stock, users, 
 Created with:
  - C# & .NET
  - WPF
- - XAML
+ - HTML
  - SQL
